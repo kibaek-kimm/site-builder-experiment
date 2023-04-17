@@ -1,0 +1,11 @@
+.wrapper {
+  outline: 0;
+}
+
+.wrapper[contenteditable]:empty:before {
+  content: attr(placeholder);
+}
+
+.wrapper[contenteditable]:focus {
+  outline: 0 !important;
+}
