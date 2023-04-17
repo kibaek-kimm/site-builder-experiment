@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.heading {
+  margin-bottom: 16px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.34;
+  color: #171717;
+  letter-spacing: -0.0236em;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  letter-spacing: 0.0056em;
+  color: #8a8a8a;
+}
+
+.image {
+  width: 100%;
+  height: 320px;
+  background: #ccc;
+  border-radius: 8px;
+}
+
+.leftArea {
+  width: 488px;
+  flex: 0 0 488px;
+}
+
+.rightArea {
+  flex: 0 0 488px;
+  width: 488px;
+}
