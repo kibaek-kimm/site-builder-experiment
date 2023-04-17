@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import styles from "./ContentEditable.module.css";
 
 type ElementAttributes<T extends keyof JSX.IntrinsicElements> =
   JSX.IntrinsicElements[T];
@@ -25,7 +26,7 @@ export default function ContentEditable<T extends keyof JSX.IntrinsicElements>({
     () =>
       React.createElement(tagName, {
         ...props,
-        className: classNames("wrapper", props.className),
+        className: classNames(styles.wrapper, props.className),
         ref: elementRef,
         contentEditable: true,
         onBlur: (e: React.FormEvent<HTMLElement>) => {
