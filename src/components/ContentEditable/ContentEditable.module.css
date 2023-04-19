@@ -3,6 +3,10 @@
 }
 
 .wrapper[contenteditable]:not(:focus) {
+  box-sizing: border-box;
+  border: 1px solid rgba(81, 167, 232, 0.2);
+}
+
 .wrapper[contenteditable]:empty:before {
   content: attr(data-placeholder);
   color: #aaa;
