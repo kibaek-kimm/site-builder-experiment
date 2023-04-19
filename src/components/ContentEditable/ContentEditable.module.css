@@ -3,6 +3,9 @@
 }
 
 .wrapper[contenteditable]:not(:focus) {
+.wrapper[contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: #aaa;
 }
 
 .wrapper[contenteditable]:focus {
