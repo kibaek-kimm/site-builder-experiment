@@ -1,14 +1,15 @@
 import {
-  useRef,
-  useState,
   KeyboardEvent,
-  FormEvent,
-  useEffect,
   cloneElement,
   ReactElement,
   FocusEvent,
+  useEffect,
 } from "react";
 import { useStructuredContentEditable } from "./hooks";
+import ContentEditable from "../ContentEditable";
+
+import styles from "./StructuredContentEditable.module.css";
+import classNames from "classnames";
 
 export interface StructuredContentEditableProps {
   parentNode: ReactElement;
@@ -40,6 +41,7 @@ export default function StructuredContentEditable({
         children: items.map((item, index) =>
           cloneElement(childNode, {
             key: index,
+            className: classNames(styles.childNode, childNode.props.className),
             ref: index === items.length - 1 ? lastItemRef : null,
             suppressContentEditableWarning: true,
             contentEditable: true,
