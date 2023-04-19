@@ -51,6 +51,7 @@ export default function StructuredContentEditable({
             ref: index === items.length - 1 ? lastItemRef : null,
             suppressContentEditableWarning: true,
             contentEditable: true,
+            children: item,
             onCompositionStart: handleCompositionStart,
             onCompositionEnd: handleCompositionEnd,
             onKeyDown: (e: KeyboardEvent<HTMLLIElement>) =>
