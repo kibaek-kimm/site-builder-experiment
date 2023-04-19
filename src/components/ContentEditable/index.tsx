@@ -7,6 +7,7 @@ type ElementAttributes<T extends keyof JSX.IntrinsicElements> =
 
 interface BaseContentEditableProps {
   tagName: keyof JSX.IntrinsicElements;
+  defaultValue?: string;
   placeholder?: string;
   onInputChange?: (content: string) => void;
 }
@@ -17,16 +18,18 @@ type ContentEditableProps<T extends keyof JSX.IntrinsicElements> =
 export default function ContentEditable<T extends keyof JSX.IntrinsicElements>({
   tagName,
   placeholder,
+  defaultValue,
   onInputChange,
   ...props
 }: ContentEditableProps<T>) {
-  const [content, setContent] = useState(placeholder ?? "");
+  const [content, setContent] = useState(defaultValue ?? "");
   const elementRef = useRef<HTMLElement>(null);
   const element = useMemo(
     () =>
       React.createElement(tagName, {
         ...props,
         className: classNames(styles.wrapper, props.className),
+        "data-placeholder": placeholder ?? "",
         ref: elementRef,
         contentEditable: true,
         onBlur: (e: React.FormEvent<HTMLElement>) => {
