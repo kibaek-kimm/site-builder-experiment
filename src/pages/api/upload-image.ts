@@ -20,14 +20,15 @@ const handler = async (req, res) => {
       }
 
       const file = files.image;
-      const newPath = `./public/uploads/${file.name}`;
-      console.log(file);
+      const ext = file.type.split("/")[1];
+      const newFileName = `image-${Date.now()}.${ext}`;
+      const newPath = `./public/uploads/${newFileName}`;
 
       fs.renameSync(file.path, newPath);
 
       res.status(200).send({
         message: "Image uploaded successfully",
-        path: `/uploads/${file.name}`,
+        path: `/uploads/${newFileName}`,
       });
     });
   } else {
