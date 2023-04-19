@@ -32,6 +32,7 @@ export default function ContentEditable<T extends keyof JSX.IntrinsicElements>({
         "data-placeholder": placeholder ?? "",
         ref: elementRef,
         contentEditable: true,
+        suppressContentEditableWarning: true,
         onBlur: (e: React.FormEvent<HTMLElement>) => {
           const target = e.target as HTMLElement;
           setContent(target.innerHTML);

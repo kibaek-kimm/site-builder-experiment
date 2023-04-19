@@ -40,11 +40,6 @@ export const useStructuredContentEditable = ({
 
   const handleChange = (e, index) => {
     const content = (e.target as HTMLElement).innerHTML;
-
-    if (itemAdded && index === items.length - 2) {
-      return;
-    }
-
     const newState = [...items];
 
     newState[index] = content;
