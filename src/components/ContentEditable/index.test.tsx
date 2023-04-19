@@ -2,7 +2,7 @@ import ContentEditable from ".";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("test", () => {
+describe("ContentEditable", () => {
   test("tagName의 태그로 contenteditable한 엘리먼트가 추가된다.", async () => {
     render(<ContentEditable tagName="h2" />);
     const 헤딩 = await screen.getByRole("heading");
