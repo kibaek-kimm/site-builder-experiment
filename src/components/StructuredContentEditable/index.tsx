@@ -34,6 +34,12 @@ export default function StructuredContentEditable({
     handleChange,
   } = useStructuredContentEditable({ defaultValue, onChange });
 
+  useEffect(() => {
+    if (childNode.type === ContentEditable) {
+      console.warn("ContentEditable 컴포넌트는 정상 동작하지 않습니다.");
+    }
+  }, [childNode]);
+
   return (
     <>
       {cloneElement(parentNode, {
