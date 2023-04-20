@@ -6,7 +6,7 @@ const DEFAULT_PARENT_NODE = <ul style={{ width: "100px" }} />;
 const DEFAULT_CHILD_NODE = <li />;
 
 describe("StructuredContentEditable", () => {
-  test("parentNode가 기본으로 생성된다.", () => {
+  test("parentNode와 childNode가 기본으로 생성된다.", () => {
     render(
       <StructuredContentEditable
         parentNode={DEFAULT_PARENT_NODE}
@@ -15,16 +15,33 @@ describe("StructuredContentEditable", () => {
     );
 
     const ul = screen.getByRole("list");
+    const li = screen.getByRole("listitem");
 
     expect(ul).toBeInTheDocument();
+    expect(li).toBeInTheDocument();
   });
 
-  test("parentNode를 클릭하면 childNode가 생성된다.", async () => {
+  test("addChildItemIfEmpty가 false인 경우, childNode를 기본으로 생성하지 않는다.", async () => {
+    render(
+      <StructuredContentEditable
+        parentNode={DEFAULT_PARENT_NODE}
+        childNode={DEFAULT_CHILD_NODE}
+        addChildItemIfEmpty={false}
+      />
+    );
+
+    const li = screen.queryByRole("listitem");
+
+    expect(li).not.toBeInTheDocument();
+  });
+
+  test("addChildItemIfEmpty가 false인 경우, parentNode를 클릭하면 childNode가 생성된다.", async () => {
     const user = userEvent.setup();
     render(
       <StructuredContentEditable
         parentNode={DEFAULT_PARENT_NODE}
         childNode={DEFAULT_CHILD_NODE}
+        addChildItemIfEmpty={false}
       />
     );
 

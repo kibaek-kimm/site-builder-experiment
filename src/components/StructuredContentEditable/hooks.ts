@@ -2,13 +2,32 @@ import { useState, useRef, useEffect } from "react";
 import { StructuredContentEditableProps } from ".";
 
 interface Params
-  extends Pick<StructuredContentEditableProps, "defaultValue" | "onChange"> {}
+  extends Pick<
+    StructuredContentEditableProps,
+    "defaultValue" | "onChange" | "addChildItemIfEmpty"
+  > {}
+
+const useDefaultValue = ({
+  defaultValue,
+  addChildItemIfEmpty,
+}: Omit<Params, "onChange">) => {
+  if (defaultValue) {
+    return defaultValue;
+  }
+
+  return addChildItemIfEmpty ? [""] : [];
+};
 
 export const useStructuredContentEditable = ({
-  defaultValue,
+  defaultValue: defaultValueProps,
+  addChildItemIfEmpty,
   onChange,
 }: Params) => {
-  const [items, setItems] = useState<string[]>(defaultValue ?? []);
+  const defaultValue = useDefaultValue({
+    defaultValue: defaultValueProps,
+    addChildItemIfEmpty,
+  });
+  const [items, setItems] = useState<string[]>(defaultValue);
   const [itemAdded, setItemAdded] = useState(false);
   const [isComposing, setIsComposing] = useState(false);
   const lastItemRef = useRef<HTMLElement>(null);

@@ -16,12 +16,14 @@ export interface StructuredContentEditableProps {
   childNode: ReactElement;
   onChange?: (values: string[]) => void;
   defaultValue?: string[];
+  addChildItemIfEmpty?: boolean;
 }
 
 export default function StructuredContentEditable({
   parentNode,
   childNode,
   defaultValue,
+  addChildItemIfEmpty = true,
   onChange,
 }: StructuredContentEditableProps) {
   const {
@@ -32,7 +34,11 @@ export default function StructuredContentEditable({
     handleCompositionStart,
     handleCompositionEnd,
     handleChange,
-  } = useStructuredContentEditable({ defaultValue, onChange });
+  } = useStructuredContentEditable({
+    defaultValue,
+    onChange,
+    addChildItemIfEmpty,
+  });
 
   useEffect(() => {
     if (childNode.type === ContentEditable) {
@@ -46,6 +52,7 @@ export default function StructuredContentEditable({
         onClick: handleClick,
         children: items.map((item, index) =>
           cloneElement(childNode, {
+            ...childNode.props,
             key: index,
             className: classNames(styles.childNode, childNode.props.className),
             ref: index === items.length - 1 ? lastItemRef : null,
