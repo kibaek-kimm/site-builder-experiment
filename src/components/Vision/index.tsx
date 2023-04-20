@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import ContentEditable from "../ContentEditable";
@@ -32,8 +33,13 @@ export default function Vision({ defaultValues, onChange }: Props) {
 
       axios
         .post("/api/upload-image", formData)
-        .then((response) => {
-          console.log(response);
+        .then(({ data }) => {
+          const newValues = { ...values, image: data.path };
+          setValues(newValues);
+
+          if (onChange) {
+            onChange(newValues);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -75,7 +81,13 @@ export default function Vision({ defaultValues, onChange }: Props) {
         />
       </div>
       <div className={styles.rightArea}>
-        <div className={styles.image}>이미지를 업로드해주세요.</div>
+        <div className={styles.image}>
+          {values.image ? (
+            <img src={values.image} alt="" />
+          ) : (
+            <>이미지를 업로드해주세요.</>
+          )}
+        </div>
         <input type="file" onChange={handleFile} />
       </div>
     </div>
