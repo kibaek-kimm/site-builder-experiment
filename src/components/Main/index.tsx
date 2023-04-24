@@ -5,6 +5,7 @@ import styles from "./Main.module.css";
 import { ChangeEvent, useState } from "react";
 import axios from "axios";
 import { MainSectionValues } from "@/types";
+import Section from "../Section";
 
 interface Props {
   defaultValues?: Partial<MainSectionValues>;
@@ -27,8 +28,14 @@ export default function Main({ defaultValues, onChange }: Props) {
 
       axios
         .post("/api/upload-image", formData)
-        .then((response) => {
-          console.log(response);
+        .then(({ data }) => {
+          const newState = { ...values };
+          newState.backgroundImage = data.path;
+          setValues(newState);
+
+          if (onChange) {
+            onChange(newState);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -37,21 +44,23 @@ export default function Main({ defaultValues, onChange }: Props) {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <ContentEditable
-        className={styles.heading}
-        tagName="h1"
-        placeholder="제목을 입력하세요."
-        defaultValue={values.heading}
-        onInputChange={(content) => {
-          const newValues = { ...values, heading: content };
-          setValues(newValues);
+    <Section>
+      <div className={styles.wrapper}>
+        <ContentEditable
+          className={styles.heading}
+          tagName="h1"
+          placeholder="제목을 입력하세요."
+          defaultValue={values.heading}
+          onInputChange={(content) => {
+            const newValues = { ...values, heading: content };
+            setValues(newValues);
 
-          if (onChange) {
-            onChange(newValues);
-          }
-        }}
-      />
-    </div>
+            if (onChange) {
+              onChange(newValues);
+            }
+          }}
+        />
+      </div>
+    </Section>
   );
 }

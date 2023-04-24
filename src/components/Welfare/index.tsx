@@ -8,6 +8,7 @@ import { DEFAULT_WELFARE_CARD_LIST } from "./constants";
 import StructuredContentEditable from "../StructuredContentEditable";
 import { log } from "console";
 import axios from "axios";
+import Section from "../Section";
 
 interface Props {
   defaultValues?: WelfareValues;
@@ -52,81 +53,83 @@ export default function Welfare({ defaultValues, onChange }: Props) {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.innerContents}>
-        <ContentEditable
-          tagName="h2"
-          className={styles.heading}
-          placeholder="최고의 일상과 성과를 위한 다양한 지원을 제공합니다"
-          defaultValue={values.heading}
-          onInputChange={(content) => {
-            const newValues = { ...values, heading: content };
-            setValues(newValues);
+    <Section label="이미지 갤러리 II">
+      <div className={styles.wrapper}>
+        <div className={styles.innerContents}>
+          <ContentEditable
+            tagName="h2"
+            className={styles.heading}
+            placeholder="최고의 일상과 성과를 위한 다양한 지원을 제공합니다"
+            defaultValue={values.heading}
+            onInputChange={(content) => {
+              const newValues = { ...values, heading: content };
+              setValues(newValues);
 
-            if (onChange) {
-              onChange(newValues);
-            }
-          }}
-        />
+              if (onChange) {
+                onChange(newValues);
+              }
+            }}
+          />
 
-        <div className={styles.cardWrapper}>
-          {values.children.map((card, index) => (
-            <div key={`welfare-info-${index}`} className={styles.card}>
-              <div className={styles.cardImage}>
-                {card.image ? (
-                  <img src={card.image} alt="" />
-                ) : (
-                  <input type="file" onChange={(e) => handleFile(e, index)} />
-                )}
+          <div className={styles.cardWrapper}>
+            {values.children.map((card, index) => (
+              <div key={`welfare-info-${index}`} className={styles.card}>
+                <div className={styles.cardImage}>
+                  {card.image ? (
+                    <img src={card.image} alt="" />
+                  ) : (
+                    <input type="file" onChange={(e) => handleFile(e, index)} />
+                  )}
+                </div>
+                <ContentEditable
+                  tagName="h3"
+                  defaultValue={card.heading}
+                  placeholder="복지 섹션의 제목을 입력해주세요."
+                  className={styles.cardHeading}
+                  onInputChange={(content) => {
+                    const { children } = { ...values };
+                    children[index].heading = content;
+                    const newState = {
+                      ...values,
+                      children,
+                    };
+
+                    setValues(newState);
+
+                    if (onChange) {
+                      onChange(newState);
+                    }
+                  }}
+                />
+                <StructuredContentEditable
+                  defaultValue={card.descriptions}
+                  parentNode={<ul className={styles.welfareList} />}
+                  onChange={(content) => {
+                    const { children } = { ...values };
+                    children[index].descriptions = content;
+                    const newState = {
+                      ...values,
+                      children,
+                    };
+
+                    setValues(newState);
+
+                    if (onChange) {
+                      onChange(newState);
+                    }
+                  }}
+                  childNode={
+                    <li
+                      className={styles.welfareListItem}
+                      data-placeholder="값을 입력해주세요."
+                    />
+                  }
+                />
               </div>
-              <ContentEditable
-                tagName="h3"
-                defaultValue={card.heading}
-                placeholder="복지 섹션의 제목을 입력해주세요."
-                className={styles.cardHeading}
-                onInputChange={(content) => {
-                  const { children } = { ...values };
-                  children[index].heading = content;
-                  const newState = {
-                    ...values,
-                    children,
-                  };
-
-                  setValues(newState);
-
-                  if (onChange) {
-                    onChange(newState);
-                  }
-                }}
-              />
-              <StructuredContentEditable
-                defaultValue={card.descriptions}
-                parentNode={<ul className={styles.welfareList} />}
-                onChange={(content) => {
-                  const { children } = { ...values };
-                  children[index].descriptions = content;
-                  const newState = {
-                    ...values,
-                    children,
-                  };
-
-                  setValues(newState);
-
-                  if (onChange) {
-                    onChange(newState);
-                  }
-                }}
-                childNode={
-                  <li
-                    className={styles.welfareListItem}
-                    data-placeholder="값을 입력해주세요."
-                  />
-                }
-              />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </Section>
   );
 }

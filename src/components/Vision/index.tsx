@@ -5,6 +5,7 @@ import ContentEditable from "../ContentEditable";
 import styles from "./Vision.module.css";
 import { ChangeEvent, useState } from "react";
 import axios from "axios";
+import Section from "../Section";
 
 interface VisionValues {
   heading: string;
@@ -48,48 +49,50 @@ export default function Vision({ defaultValues, onChange }: Props) {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.leftArea}>
-        <ContentEditable
-          className={styles.heading}
-          tagName="h2"
-          defaultValue={values.heading}
-          placeholder="비전의 제목을 입력해주세요."
-          onInputChange={(content) => {
-            const newValues = { ...values, heading: content };
-            setValues(newValues);
+    <Section label="비전">
+      <div className={styles.wrapper}>
+        <div className={styles.leftArea}>
+          <ContentEditable
+            className={styles.heading}
+            tagName="h2"
+            defaultValue={values.heading}
+            placeholder="비전의 제목을 입력해주세요."
+            onInputChange={(content) => {
+              const newValues = { ...values, heading: content };
+              setValues(newValues);
 
-            if (onChange) {
-              onChange(newValues);
-            }
-          }}
-        />
+              if (onChange) {
+                onChange(newValues);
+              }
+            }}
+          />
 
-        <ContentEditable
-          className={styles.description}
-          tagName="p"
-          defaultValue={values.description}
-          placeholder="비전의 내용을 입력해주세요."
-          onInputChange={(content) => {
-            const newValues = { ...values, description: content };
-            setValues(newValues);
+          <ContentEditable
+            className={styles.description}
+            tagName="p"
+            defaultValue={values.description}
+            placeholder="비전의 내용을 입력해주세요."
+            onInputChange={(content) => {
+              const newValues = { ...values, description: content };
+              setValues(newValues);
 
-            if (onChange) {
-              onChange(newValues);
-            }
-          }}
-        />
-      </div>
-      <div className={styles.rightArea}>
-        <div className={styles.image}>
-          {values.image ? (
-            <img src={values.image} alt="" />
-          ) : (
-            <>이미지를 업로드해주세요.</>
-          )}
+              if (onChange) {
+                onChange(newValues);
+              }
+            }}
+          />
         </div>
-        <input type="file" onChange={handleFile} />
+        <div className={styles.rightArea}>
+          <div className={styles.image}>
+            {values.image ? (
+              <img src={values.image} alt="" />
+            ) : (
+              <>이미지를 업로드해주세요.</>
+            )}
+          </div>
+          <input type="file" onChange={handleFile} />
+        </div>
       </div>
-    </div>
+    </Section>
   );
 }
