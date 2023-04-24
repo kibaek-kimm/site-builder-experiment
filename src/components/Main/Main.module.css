@@ -11,12 +11,10 @@
   content: "";
   display: block;
   position: absolute;
-
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
   background: rgba(23, 23, 25, 0.52);
 }
 
