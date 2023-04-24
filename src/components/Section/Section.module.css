@@ -1,0 +1,41 @@
+.wrapper {
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid #0095ff;
+  box-sizing: border-box;
+}
+
+.sectionLabel {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 12px;
+  background: #0095ff;
+  border-radius: 4px 4px 0px 0px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.0145em;
+  color: #ffffff;
+  transform: translate3d(0, -100%, 0);
+  z-index: 5;
+}
+
+.active .sectionLabel {
+  display: block;
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+}
