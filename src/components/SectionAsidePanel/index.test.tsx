@@ -31,8 +31,7 @@ describe("SectionAsidePanel", () => {
 
   test("해당 섹션의 설명을 넣을 수 있다.", () => {
     render(<SectionAsidePanel {...DEFAULT_PROPS} />);
-    const 패널설명 = screen.getByText("섹션에 대한 설명입니다");
-    console.log(패널설명);
+    const 패널설명 = screen.getByText("섹션에 대한 설명입니다.");
 
     expect(패널설명).toBeInTheDocument();
   });
