@@ -44,7 +44,7 @@ export default function Main({ defaultValues, onChange }: Props) {
   };
 
   return (
-    <Section>
+    <Section label="메인 타이틀">
       <div className={styles.wrapper}>
         <ContentEditable
           className={styles.heading}
