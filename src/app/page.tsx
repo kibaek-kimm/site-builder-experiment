@@ -1,11 +1,11 @@
 "use client";
 
 import styles from "./page.module.css";
-import Vision from "@/components/Vision";
+import Vision from "@/features/editor/contents/Vision";
 import { useState } from "react";
-import Main from "@/components/Main";
+import Main from "@/features/editor/contents/Main";
 import { BuilderValues } from "@/types";
-import Welfare from "@/components/Welfare";
+import Welfare from "@/features/editor/contents/Welfare";
 
 export default function Home() {
   const [builderValues, setBuilderValues] = useState<BuilderValues>({});

@@ -1,11 +1,11 @@
 "use client";
 
-import ContentEditable from "../ContentEditable";
-import styles from "./Main.module.css";
+import ContentEditable from "@/features/editor/core/ContentEditable";
 import { ChangeEvent, useState } from "react";
 import axios from "axios";
 import { MainSectionValues } from "@/types";
-import Section from "../Section";
+import Section from "@/features/editor/core/Section";
+import styles from "./Main.module.css";
 
 interface Props {
   defaultValues?: Partial<MainSectionValues>;

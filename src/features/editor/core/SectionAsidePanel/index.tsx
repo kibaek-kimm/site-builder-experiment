@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
+import { ChangeEvent, PropsWithChildren, ReactNode, useState } from "react";
 import styles from "./SectionAsidePanel.module.css";
 import SubTitle from "./SubTitle";
 
@@ -12,12 +12,13 @@ interface Props {
 }
 
 export default function SectionAsidePanel({
+  children,
   title,
   description,
   defaultEnabled,
   onClose,
   onChangeEnable,
-}: Props) {
+}: PropsWithChildren<Props>) {
   const [enable, setEnable] = useState<boolean>(!!defaultEnabled);
 
   const handleClose = () => {
@@ -66,6 +67,7 @@ export default function SectionAsidePanel({
         </div>
 
         <div className={styles.sectionDescription}>{description}</div>
+        {children}
       </div>
     </div>
   );

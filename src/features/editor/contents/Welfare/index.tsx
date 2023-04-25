@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import ContentEditable from "../ContentEditable";
-import styles from "./Welfare.module.css";
-import { WelfareValues } from "@/types";
-import { DEFAULT_WELFARE_CARD_LIST } from "./constants";
-import StructuredContentEditable from "../StructuredContentEditable";
-import { log } from "console";
+import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import Section from "../Section";
+import ContentEditable from "@/features/editor/core/ContentEditable";
+import { DEFAULT_WELFARE_CARD_LIST } from "./constants";
+import StructuredContentEditable from "@/features/editor/core/StructuredContentEditable";
+import Section from "@/features/editor/core/Section";
+import { WelfareValues } from "@/types";
+import styles from "./Welfare.module.css";
 
 interface Props {
   defaultValues?: WelfareValues;

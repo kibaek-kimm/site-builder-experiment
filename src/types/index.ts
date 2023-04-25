@@ -9,7 +9,7 @@ export interface VisionSectionValues {
   image: string;
 }
 
-interface WelfareCard {
+export interface WelfareCard {
   heading: string;
   descriptions: string[];
   image: string;

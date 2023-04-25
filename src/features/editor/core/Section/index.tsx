@@ -28,7 +28,10 @@ export default function Section({ label, children, onFocus, ...props }: Props) {
     }
   });
 
-  const handleClick = () => {
+  const handleClick = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (focus) {
       return;
     }

@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import ContentEditable from "../ContentEditable";
+import ContentEditable from "@/features/editor/core/ContentEditable";
 import styles from "./Vision.module.css";
 import { ChangeEvent, useState } from "react";
 import axios from "axios";
-import Section from "../Section";
+import Section from "@/features/editor/core/Section";
+import SectionAsidePanel from "@/features/editor/core/SectionAsidePanel";
+import PanelContent from "@/features/editor/core/SectionAsidePanel/PanelContent";
+import SubTitle from "@/features/editor/core/SectionAsidePanel/SubTitle";
 
 interface VisionValues {
   heading: string;
@@ -50,6 +53,15 @@ export default function Vision({ defaultValues, onChange }: Props) {
 
   return (
     <Section label="비전">
+      <SectionAsidePanel
+        title="소개글"
+        description="한개의 이미지, 타이틀, 설명 영역으로 구성되어있는 영역입니다. 구체적인 회사의 소개를 작성해주세요."
+      >
+        <PanelContent>
+          <SubTitle>이미지</SubTitle>
+          qwdpkqwdop
+        </PanelContent>
+      </SectionAsidePanel>
       <div className={styles.wrapper}>
         <div className={styles.leftArea}>
           <ContentEditable

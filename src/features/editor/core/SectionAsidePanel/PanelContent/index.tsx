@@ -1,6 +1,6 @@
 import { HTMLAttributes, PropsWithChildren } from "react";
 import classNames from "classnames";
-import styles from "./SubTitle.module.css";
+import styles from "./PanelContent.module.css";
 import SubTitle from "../SubTitle";
 
 interface Props extends PropsWithChildren<HTMLAttributes<HTMLElement>> {
