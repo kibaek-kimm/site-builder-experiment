@@ -83,4 +83,8 @@ describe("Section", () => {
 
     expect(onFocus).toHaveBeenCalled();
   });
+
+  test.todo("활성화되면 SectionAsidePanel을 노출한다.");
+  test.todo("활성화가 해제되면 SectionAsidePanel가 사라진다.");
+  test.todo("SectionAsidePanel의 X버튼을 클릭하면 사라진다.");
 });
