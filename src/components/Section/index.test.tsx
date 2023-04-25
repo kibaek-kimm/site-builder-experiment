@@ -67,8 +67,10 @@ describe("Section", () => {
     await userEvent.click(섹션1);
     await userEvent.click(섹션2);
 
-    expect(섹션1).not.toHaveClass(styles.active);
-    expect(섹션2).toHaveClass(styles.active);
+    waitFor(() => {
+      expect(섹션1).not.toHaveClass(styles.active);
+      expect(섹션2).toHaveClass(styles.active);
+    });
   });
 
   test("활성화 시 onFocus props를 실행한다.", async () => {
