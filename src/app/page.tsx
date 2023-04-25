@@ -20,11 +20,9 @@ export default function Home() {
 
   return (
     <RootLayout>
-      <div className={styles.editArea}>
-        <Main onChange={(values) => handleChange("main", values)} />
-        <Vision onChange={(values) => handleChange("vision", values)} />
-        <Welfare onChange={(values) => handleChange("welfare", values)} />
-      </div>
+      <Main onChange={(values) => handleChange("main", values)} />
+      <Vision onChange={(values) => handleChange("vision", values)} />
+      <Welfare onChange={(values) => handleChange("welfare", values)} />
       {/* <div className={styles.dataArea}>
         <pre>{JSON.stringify(builderValues, null, 4)}</pre>
       </div> */}

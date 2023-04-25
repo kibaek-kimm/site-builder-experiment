@@ -3,13 +3,6 @@
   min-height: 100vh;
 }
 
-.editArea {
-  width: 1024px;
-  flex: 0 0 1024px;
-  min-height: 100vh;
-  overflow: auto;
-}
-
 .dataArea {
   width: calc(100vw - 1060px);
   height: 100vh;
