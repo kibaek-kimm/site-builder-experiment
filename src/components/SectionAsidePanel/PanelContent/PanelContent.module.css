@@ -1,0 +1,8 @@
+.panelContent {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.panelContent:last-child {
+  margin-bottom: 0;
+}
