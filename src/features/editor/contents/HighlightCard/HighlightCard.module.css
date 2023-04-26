@@ -1,0 +1,58 @@
+.wrapper {
+  width: 100%;
+  padding: 120px 0;
+  background: #f7f7f8;
+}
+
+/* FIXME: 공통으로 수정 */
+.innerContents {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 960px;
+  margin: 0 auto;
+}
+
+.heading {
+  flex: 0 0 300px;
+  width: 300px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 135.8%;
+  letter-spacing: -0.0236em;
+  color: #171717;
+}
+
+.cardList {
+  flex: 0 0 632px;
+  width: 632px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cardItem {
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.cardTitle {
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+  text-align: center;
+  letter-spacing: -0.0282em;
+  color: #3366ff;
+}
+
+.cardDescription {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 127.3%;
+  text-align: center;
+  letter-spacing: -0.0194em;
+  color: #8a8a8a;
+}
