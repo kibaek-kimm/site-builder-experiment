@@ -6,6 +6,7 @@ import axios from "axios";
 import { MainSectionValues } from "@/types";
 import Section from "@/features/editor/core/Section";
 import styles from "./Main.module.css";
+import SectionAsidePanel from "../../core/SectionAsidePanel";
 
 interface Props {
   defaultValues?: Partial<MainSectionValues>;
@@ -16,6 +17,8 @@ export default function Main({ defaultValues, onChange }: Props) {
   const [values, setValues] = useState<MainSectionValues>({
     heading: defaultValues?.heading ?? "",
     backgroundImage: defaultValues?.backgroundImage ?? "",
+    // TODO: api연동
+    enable: true,
   });
 
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,22 +48,39 @@ export default function Main({ defaultValues, onChange }: Props) {
 
   return (
     <Section label="메인 타이틀">
-      <div className={styles.wrapper}>
-        <ContentEditable
-          className={styles.heading}
-          tagName="h1"
-          placeholder="제목을 입력하세요."
-          defaultValue={values.heading}
-          onInputChange={(content) => {
-            const newValues = { ...values, heading: content };
-            setValues(newValues);
+      {({ active, setActive }) => (
+        <div className={styles.wrapper}>
+          {active && (
+            <SectionAsidePanel
+              title="메인 타이틀"
+              description="가장 상단에 보이는 메인 타이틀 영역입니다. 회사를 소개할 수 있는 문구와 사진을 게재해주세요."
+              onClickClose={() => setActive(false)}
+              onChangeEnable={(enable) => {
+                const newValues = { ...values, enable };
+                setValues(newValues);
 
-            if (onChange) {
-              onChange(newValues);
-            }
-          }}
-        />
-      </div>
+                if (onChange) {
+                  onChange(newValues);
+                }
+              }}
+            />
+          )}
+          <ContentEditable
+            className={styles.heading}
+            tagName="h1"
+            placeholder="제목을 입력하세요."
+            defaultValue={values.heading}
+            onInputChange={(content) => {
+              const newValues = { ...values, heading: content };
+              setValues(newValues);
+
+              if (onChange) {
+                onChange(newValues);
+              }
+            }}
+          />
+        </div>
+      )}
     </Section>
   );
 }
