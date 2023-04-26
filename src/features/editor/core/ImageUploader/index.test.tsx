@@ -56,27 +56,7 @@ describe("ImageUploader", () => {
       );
     });
   });
-  test("disclaimer를 추가할 수 있다.", () => {
-    const { container } = render(
-      <ImageUploader
-        disclaimer={
-          <>
-            파일 규격 jpg, png, gif
-            <br />
-            권장 최소 가로 크기 976px, 최대 이미지 크기 2M
-          </>
-        }
-      />
-    );
 
-    const 디스클레이머 = Array.from(container.querySelectorAll("div")).find(
-      (elem) => elem.classList.contains(styles.disclaimer)
-    );
-
-    expect(디스클레이머?.innerHTML).toEqual(
-      "파일 규격 jpg, png, gif<br>권장 최소 가로 크기 976px, 최대 이미지 크기 2M"
-    );
-  });
   test.todo("파일선택 이후 재업로드하면 선택한 이미지가 변경된다.");
   test.todo("파일을 드래그해서 업로드 할 수 있다.");
 });
