@@ -7,6 +7,7 @@ import Main from "@/features/editor/contents/Main";
 import { BuilderValues } from "@/types";
 import Welfare from "@/features/editor/contents/Welfare";
 import RootLayout from "@/features/layout/RootLayout";
+import Introduction from "@/features/editor/contents/Introduction";
 
 export default function Home() {
   const [builderValues, setBuilderValues] = useState<BuilderValues>({});
@@ -21,6 +22,7 @@ export default function Home() {
   return (
     <RootLayout>
       <Main onChange={(values) => handleChange("main", values)} />
+      <Introduction />
       <Vision onChange={(values) => handleChange("vision", values)} />
       <Welfare onChange={(values) => handleChange("welfare", values)} />
       {/* <div className={styles.dataArea}>

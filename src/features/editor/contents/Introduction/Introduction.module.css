@@ -1,0 +1,51 @@
+.wrapper {
+  padding: 160px 0;
+  background: #fff;
+}
+
+/* FIXME: 공통으로 수정 */
+.innerContents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 960px;
+  margin: 0 auto;
+}
+
+.imageWrapper {
+  width: 488px;
+  height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textWrapper {
+  width: 424px;
+  margin-left: 48px;
+}
+
+.heading {
+  margin-bottom: 16px;
+  font-family: "Pretendard JP";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 135.8%;
+  letter-spacing: -0.0236em;
+  color: #171717;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 162.5%;
+  letter-spacing: 0.0056em;
+  color: #8a8a8a;
+}

@@ -7,6 +7,12 @@ export interface MainSectionValues extends CommonSectionValues {
   backgroundImage: string;
 }
 
+export interface IntroductionSectionValues extends CommonSectionValues {
+  heading: string;
+  description: string;
+  image: string;
+}
+
 export interface VisionSectionValues extends CommonSectionValues {
   heading: string;
   description: string;
