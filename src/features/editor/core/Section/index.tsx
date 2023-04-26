@@ -1,11 +1,19 @@
 import classNames from "classnames";
-import { HTMLAttributes, ReactNode, useRef, useState } from "react";
+import {
+  Dispatch,
+  HTMLAttributes,
+  ReactNode,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
 import styles from "./Section.module.css";
 import { FOCUSABLE_SELECTORS } from "./constants";
 import useDocumentClick from "@/hooks/useDocumentClick";
 
 interface PropsParam {
   active: boolean;
+  setActive: Dispatch<SetStateAction<boolean>>;
 }
 
 type SectionChildren = ReactNode | ((props: PropsParam) => ReactNode);
@@ -72,7 +80,7 @@ export default function Section({ label, children, onFocus, ...props }: Props) {
       )}
       <div className={styles.section}>
         {typeof children === "function" ? (
-          <>{children({ active })}</>
+          <>{children({ active, setActive })}</>
         ) : (
           children
         )}
