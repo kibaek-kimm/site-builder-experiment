@@ -38,9 +38,6 @@ export default function Section({ label, children, onFocus, ...props }: Props) {
   });
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
     if (active) {
       return;
     }
