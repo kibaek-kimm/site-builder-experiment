@@ -13,6 +13,12 @@ export interface IntroductionSectionValues extends CommonSectionValues {
   image: string;
 }
 
+export interface VideoContentsSectionValues extends CommonSectionValues {
+  heading: string;
+  description: string;
+  youtubeId: string;
+}
+
 export interface VisionSectionValues extends CommonSectionValues {
   heading: string;
   description: string;
