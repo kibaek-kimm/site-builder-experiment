@@ -3,12 +3,19 @@ import { ChangeEvent, ReactNode, useRef, useState } from "react";
 import styles from "./ImageUploader.module.css";
 
 interface Props {
+  defaultImage?: string;
   disclaimer?: ReactNode;
   onUploadedFile?: (file: File) => void;
 }
 
-export default function ImageUploader({ disclaimer, onUploadedFile }: Props) {
-  const [uploadedImage, setUploadedImage] = useState<string>("");
+export default function ImageUploader({
+  disclaimer,
+  defaultImage,
+  onUploadedFile,
+}: Props) {
+  const [uploadedImage, setUploadedImage] = useState<string>(
+    defaultImage ?? ""
+  );
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handleClickButton = () => {
