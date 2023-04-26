@@ -47,7 +47,16 @@ export default function Main({ defaultValues, onChange }: Props) {
             >
               <PanelContent>
                 <SubTitle>이미지</SubTitle>
-                <ImageUploaderList>
+                <ImageUploaderList
+                  disclaimer={
+                    <>
+                      파일 규격 jpg, png, gif
+                      <br />
+                      권장 최소 가로 크기 <strong>2880px</strong> , 최대 이미지
+                      크기 <strong>5M</strong>
+                    </>
+                  }
+                >
                   <ImageUploader
                     defaultImage={values.backgroundImage}
                     onUploadedFile={async (file) => {

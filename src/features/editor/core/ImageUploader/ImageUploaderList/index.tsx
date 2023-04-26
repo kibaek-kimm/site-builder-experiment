@@ -1,15 +1,17 @@
-import { HTMLAttributes, PropsWithChildren } from "react";
+import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
 import styles from "./ImageUploaderList.module.css";
 import classNames from "classnames";
 
 interface Props extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
-  column: number;
+  column?: number;
+  disclaimer?: ReactNode;
 }
 
 export default function ImageUploaderList({
   children,
   column = 1,
   className,
+  disclaimer,
   ...props
 }: Props) {
   return (
@@ -20,6 +22,8 @@ export default function ImageUploaderList({
       {...props}
     >
       {children}
+
+      {disclaimer && <div className={styles.disclaimer}>{disclaimer}</div>}
     </div>
   );
 }

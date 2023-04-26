@@ -4,15 +4,10 @@ import styles from "./ImageUploader.module.css";
 
 interface Props {
   defaultImage?: string;
-  disclaimer?: ReactNode;
   onUploadedFile?: (file: File) => void;
 }
 
-export default function ImageUploader({
-  disclaimer,
-  defaultImage,
-  onUploadedFile,
-}: Props) {
+export default function ImageUploader({ defaultImage, onUploadedFile }: Props) {
   const [uploadedImage, setUploadedImage] = useState<string>(
     defaultImage ?? ""
   );
@@ -57,8 +52,6 @@ export default function ImageUploader({
           <img src={uploadedImage} alt="" />
         </div>
       )}
-
-      {disclaimer && <div className={styles.disclaimer}>{disclaimer}</div>}
     </div>
   );
 }

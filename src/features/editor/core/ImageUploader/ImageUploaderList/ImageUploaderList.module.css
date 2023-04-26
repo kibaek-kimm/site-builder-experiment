@@ -6,3 +6,12 @@
 .wrapper.column2 {
   grid-template-columns: 1fr 1fr;
 }
+
+.disclaimer {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133.4%;
+  letter-spacing: 0.025em;
+  color: #8a8a8a;
+}
