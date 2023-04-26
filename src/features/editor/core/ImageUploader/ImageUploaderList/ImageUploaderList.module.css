@@ -1,0 +1,8 @@
+.wrapper {
+  display: grid;
+  gap: 8px;
+}
+
+.wrapper.column2 {
+  grid-template-columns: 1fr 1fr;
+}
