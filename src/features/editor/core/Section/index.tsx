@@ -1,22 +1,23 @@
 import classNames from "classnames";
-import {
-  HTMLAttributes,
-  PropsWithChildren,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { HTMLAttributes, ReactNode, useRef, useState } from "react";
 import styles from "./Section.module.css";
 import { FOCUSABLE_SELECTORS } from "./constants";
 import useDocumentClick from "@/hooks/useDocumentClick";
 
-interface Props extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
+interface PropsParam {
+  active: boolean;
+}
+
+type SectionChildren = ReactNode | ((props: PropsParam) => ReactNode);
+
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   label?: string;
+  children: SectionChildren;
   onFocus?: () => void;
 }
 
 export default function Section({ label, children, onFocus, ...props }: Props) {
-  const [focus, setFocus] = useState<boolean>();
+  const [active, setActive] = useState<boolean>(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useDocumentClick((event) => {
@@ -24,19 +25,19 @@ export default function Section({ label, children, onFocus, ...props }: Props) {
       sectionRef.current &&
       !sectionRef.current.contains(event?.target as Node)
     ) {
-      setFocus(false);
+      setActive(false);
     }
   });
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
     e.stopPropagation();
 
-    if (focus) {
+    if (active) {
       return;
     }
 
-    setFocus(true);
+    setActive(true);
 
     if (sectionRef.current) {
       const focusableElements = sectionRef.current.querySelectorAll(
@@ -61,7 +62,7 @@ export default function Section({ label, children, onFocus, ...props }: Props) {
     <div
       {...props}
       ref={sectionRef}
-      className={classNames(styles.wrapper, { [styles.active]: focus })}
+      className={classNames(styles.wrapper, { [styles.active]: active })}
       onClick={handleClick}
     >
       {label && (
@@ -69,7 +70,13 @@ export default function Section({ label, children, onFocus, ...props }: Props) {
           {label}
         </div>
       )}
-      <div className={styles.section}>{children}</div>
+      <div className={styles.section}>
+        {typeof children === "function" ? (
+          <>{children({ active })}</>
+        ) : (
+          children
+        )}
+      </div>
     </div>
   );
 }
