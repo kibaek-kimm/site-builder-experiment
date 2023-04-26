@@ -4,21 +4,22 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import ContentEditable from "@/features/editor/core/ContentEditable";
-import { DEFAULT_WELFARE_CARD_LIST } from "./constants";
+import { DEFAULT_GALLERY2_CARD_LIST } from "./constants";
 import StructuredContentEditable from "@/features/editor/core/StructuredContentEditable";
 import Section from "@/features/editor/core/Section";
-import { WelfareValues } from "@/types";
-import styles from "./Welfare.module.css";
+import { ImageGallery2Values } from "@/types";
+import styles from "./ImageGallery2.module.css";
 
 interface Props {
-  defaultValues?: WelfareValues;
-  onChange?: (values: WelfareValues) => void;
+  defaultValues?: ImageGallery2Values;
+  onChange?: (values: ImageGallery2Values) => void;
 }
 
-export default function Welfare({ defaultValues, onChange }: Props) {
-  const [values, setValues] = useState<WelfareValues>({
+export default function ImageGallery2({ defaultValues, onChange }: Props) {
+  const [values, setValues] = useState<ImageGallery2Values>({
+    enable: defaultValues?.enable ?? false,
     heading: defaultValues?.heading ?? "",
-    children: defaultValues?.children ?? DEFAULT_WELFARE_CARD_LIST,
+    children: defaultValues?.children ?? DEFAULT_GALLERY2_CARD_LIST,
   });
 
   const handleFile = (e: ChangeEvent<HTMLInputElement>, index: number) => {
@@ -73,7 +74,7 @@ export default function Welfare({ defaultValues, onChange }: Props) {
 
           <div className={styles.cardWrapper}>
             {values.children.map((card, index) => (
-              <div key={`welfare-info-${index}`} className={styles.card}>
+              <div key={`image-gallery2-info-${index}`} className={styles.card}>
                 <div className={styles.cardImage}>
                   {card.image ? (
                     <img src={card.image} alt="" />
@@ -103,7 +104,7 @@ export default function Welfare({ defaultValues, onChange }: Props) {
                 />
                 <StructuredContentEditable
                   defaultValue={card.descriptions}
-                  parentNode={<ul className={styles.welfareList} />}
+                  parentNode={<ul className={styles.galleryList} />}
                   onChange={(content) => {
                     const { children } = { ...values };
                     children[index].descriptions = content;
@@ -120,7 +121,7 @@ export default function Welfare({ defaultValues, onChange }: Props) {
                   }}
                   childNode={
                     <li
-                      className={styles.welfareListItem}
+                      className={styles.galleryListItem}
                       data-placeholder="값을 입력해주세요."
                     />
                   }

@@ -1,14 +1,14 @@
 import { render, screen, cleanup, act } from "@testing-library/react";
-import Welfare from ".";
+import ImageGallery2 from ".";
 import userEvent from "@testing-library/user-event";
 
-describe("Welfare", () => {
+describe("ImageGallery2", () => {
   beforeEach(() => {
     document.body.innerHTML = "";
   });
   test("제목을 수정할 수 있다", async () => {
     const user = userEvent.setup();
-    render(<Welfare />);
+    render(<ImageGallery2 />);
 
     const 헤딩리스트 = screen.getAllByRole("heading");
     const 메인헤딩 = 헤딩리스트.find(
@@ -21,7 +21,7 @@ describe("Welfare", () => {
   });
 
   test("기본적으로 복지 정보 카드 4개가 기본으로 생성된다.", async () => {
-    render(<Welfare />);
+    render(<ImageGallery2 />);
 
     const 헤딩리스트 = screen.getAllByRole("heading");
     const 카드헤딩 = 헤딩리스트.filter(({ tagName }) => tagName === "H3");
@@ -31,7 +31,7 @@ describe("Welfare", () => {
 
   test("각 복지 카드의 정보를 수정할 수 있다.", async () => {
     const user = userEvent.setup();
-    render(<Welfare />);
+    render(<ImageGallery2 />);
 
     const 헤딩리스트 = screen.getAllByRole("heading");
     const 카드헤딩 = 헤딩리스트.filter(
@@ -60,8 +60,9 @@ describe("Welfare", () => {
 
   test("defaultValues가 있으면 초기값이 설정된다.", async () => {
     render(
-      <Welfare
+      <ImageGallery2
         defaultValues={{
+          enable: true,
           heading: "복지 타이틀 기본값",
           children: [
             {
@@ -139,7 +140,7 @@ describe("Welfare", () => {
   test.skip("값이 변경되면 onChange props를 호출한다.", async () => {
     const onChange = jest.fn();
     const user = userEvent.setup();
-    render(<Welfare onChange={onChange} />);
+    render(<ImageGallery2 onChange={onChange} />);
 
     const 헤딩리스트 = screen.getAllByRole("heading");
     const 메인헤딩 = 헤딩리스트.find(

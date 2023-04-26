@@ -1,6 +1,6 @@
-import { WelfareCard } from "@/types";
+import { ImageGallery2Card } from "@/types";
 
-export const DEFAULT_WELFARE_CARD_LIST: WelfareCard[] = [
+export const DEFAULT_GALLERY2_CARD_LIST: ImageGallery2Card[] = [
   {
     image: "",
     heading: "",

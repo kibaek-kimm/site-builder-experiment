@@ -56,5 +56,5 @@ describe("VideoContents", () => {
     });
   });
 
-  test.todo("배경 이미지를 변경할 수 있다.");
+  test.todo("유튜브 영상아이디를 입력하면 영상이 노출한다.");
 });

@@ -19,15 +19,15 @@ export interface VideoContentsSectionValues extends CommonSectionValues {
   youtubeId: string;
 }
 
-export interface WelfareCard extends CommonSectionValues {
+export interface ImageGallery2Card {
   heading: string;
   descriptions: string[];
   image: string;
 }
 
-export interface WelfareValues extends CommonSectionValues {
+export interface ImageGallery2Values extends CommonSectionValues {
   heading: string;
-  children: WelfareCard[];
+  children: ImageGallery2Card[];
 }
 
 export interface BuilderValues extends CommonSectionValues {
