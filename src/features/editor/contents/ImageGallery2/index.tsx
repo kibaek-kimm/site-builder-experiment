@@ -9,6 +9,12 @@ import StructuredContentEditable from "@/features/editor/core/StructuredContentE
 import Section from "@/features/editor/core/Section";
 import { ImageGallery2Values } from "@/types";
 import styles from "./ImageGallery2.module.css";
+import SectionAsidePanel from "../../core/SectionAsidePanel";
+import PanelContent from "../../core/SectionAsidePanel/PanelContent";
+import SubTitle from "../../core/SectionAsidePanel/SubTitle";
+import ImageUploaderList from "../../core/ImageUploader/ImageUploaderList";
+import ImageUploader from "../../core/ImageUploader";
+import { uploadImage } from "@/apis/uploadImage";
 
 interface Props {
   defaultValues?: ImageGallery2Values;
@@ -22,28 +28,14 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
     children: defaultValues?.children ?? DEFAULT_GALLERY2_CARD_LIST,
   });
 
-  const handleFile = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-    const target = e.currentTarget;
-    const file = (target.files as FileList)[0];
+  const handleChangeValues = (key: string, value: string) => {
+    const newState = { ...values };
+    newState[key] = value;
 
-    if (file) {
-      const formData = new FormData();
-      formData.append("image", file);
+    setValues(newState);
 
-      axios
-        .post("/api/upload-image", formData)
-        .then(({ data }) => {
-          const newState = { ...values };
-          newState.children[index].image = data.path;
-          setValues(newState);
-
-          if (onChange) {
-            onChange(newState);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    if (onChange) {
+      onChange(newState);
     }
   };
 
@@ -55,82 +47,108 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
 
   return (
     <Section label="이미지 갤러리 II">
-      <div className={styles.wrapper}>
-        <div className={styles.innerContents}>
-          <ContentEditable
-            tagName="h2"
-            className={styles.heading}
-            placeholder="최고의 일상과 성과를 위한 다양한 지원을 제공합니다"
-            defaultValue={values.heading}
-            onInputChange={(content) => {
-              const newValues = { ...values, heading: content };
-              setValues(newValues);
+      {({ active, setActive }) => (
+        <>
+          {active && (
+            <SectionAsidePanel
+              title="이미지 갤러리 II"
+              description="회사 이미지, 서비스, 문화 등 소개하고 싶은 사진을 자유롭게 업로드 해주세요."
+              onClickClose={() => setActive(false)}
+              onChangeEnable={(enable) => {
+                const newValues = { ...values, enable };
+                setValues(newValues);
 
-              if (onChange) {
-                onChange(newValues);
-              }
-            }}
-          />
-
-          <div className={styles.cardWrapper}>
-            {values.children.map((card, index) => (
-              <div key={`image-gallery2-info-${index}`} className={styles.card}>
-                <div className={styles.cardImage}>
-                  {card.image ? (
-                    <img src={card.image} alt="" />
-                  ) : (
-                    <input type="file" onChange={(e) => handleFile(e, index)} />
-                  )}
-                </div>
-                <ContentEditable
-                  tagName="h3"
-                  defaultValue={card.heading}
-                  placeholder="복지 섹션의 제목을 입력해주세요."
-                  className={styles.cardHeading}
-                  onInputChange={(content) => {
-                    const { children } = { ...values };
-                    children[index].heading = content;
-                    const newState = {
-                      ...values,
-                      children,
-                    };
-
-                    setValues(newState);
-
-                    if (onChange) {
-                      onChange(newState);
-                    }
-                  }}
-                />
-                <StructuredContentEditable
-                  defaultValue={card.descriptions}
-                  parentNode={<ul className={styles.galleryList} />}
-                  onChange={(content) => {
-                    const { children } = { ...values };
-                    children[index].descriptions = content;
-                    const newState = {
-                      ...values,
-                      children,
-                    };
-
-                    setValues(newState);
-
-                    if (onChange) {
-                      onChange(newState);
-                    }
-                  }}
-                  childNode={
-                    <li
-                      className={styles.galleryListItem}
-                      data-placeholder="값을 입력해주세요."
-                    />
+                if (onChange) {
+                  onChange(newValues);
+                }
+              }}
+            >
+              <PanelContent>
+                <SubTitle>이미지</SubTitle>
+                <ImageUploaderList
+                  column={2}
+                  disclaimer={
+                    <>
+                      파일 규격 jpg, png, gif
+                      <br />
+                      권장 최소 가로 크기 <strong>2880px</strong> , 최대 이미지
+                      크기 <strong>5M</strong>
+                    </>
                   }
-                />
+                >
+                  {Array.from({ length: 4 }, (_, index) => (
+                    <ImageUploader
+                      key={index}
+                      defaultImage={values.children[index]?.image}
+                      onUploadedFile={async (file) => {
+                        const { data, status } = await uploadImage(file);
+
+                        if (status === 200) {
+                          const { children } = { ...values };
+                          children[index].image = data.path;
+                          handleChangeValues("children", children);
+                        }
+                      }}
+                    />
+                  ))}
+                </ImageUploaderList>
+              </PanelContent>
+            </SectionAsidePanel>
+          )}
+          <div className={styles.wrapper}>
+            <div className={styles.innerContents}>
+              <ContentEditable
+                tagName="h2"
+                className={styles.heading}
+                placeholder="최고의 일상과 성과를 위한 다양한 지원을 제공합니다"
+                defaultValue={values.heading}
+                onInputChange={(content) => {
+                  handleChangeValues("heading", content);
+                }}
+              />
+
+              <div className={styles.cardWrapper}>
+                {values.children.map((card, index) => (
+                  <div
+                    key={`image-gallery2-info-${index}`}
+                    className={styles.card}
+                  >
+                    <div className={styles.cardImage}>
+                      {card.image && <img src={card.image} alt="" />}
+                    </div>
+                    <ContentEditable
+                      tagName="h3"
+                      defaultValue={card.heading}
+                      placeholder="복지 섹션의 제목을 입력해주세요."
+                      className={styles.cardHeading}
+                      onInputChange={(content) => {
+                        const { children } = { ...values };
+                        children[index].heading = content;
+                        handleChangeValues("children", children);
+                      }}
+                    />
+                    <StructuredContentEditable
+                      defaultValue={card.descriptions}
+                      parentNode={<ul className={styles.galleryList} />}
+                      onChange={(content) => {
+                        const { children } = { ...values };
+                        children[index].heading = content;
+                        handleChangeValues("children", children);
+                      }}
+                      childNode={
+                        <li
+                          className={styles.galleryListItem}
+                          data-placeholder="값을 입력해주세요."
+                        />
+                      }
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </Section>
   );
 }
