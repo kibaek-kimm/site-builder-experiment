@@ -5,7 +5,7 @@ import Vision from ".";
 describe("Vision", () => {
   test("제목/내용을 수정할 수 있다.", async () => {
     const user = userEvent.setup();
-    const { container } = await render(<Vision />);
+    const { container } = render(<Vision />);
 
     const 헤딩 = screen.getByRole("heading");
     const 설명 = container.querySelector("p") as Element;
