@@ -11,7 +11,7 @@ const useDefaultValue = ({
   defaultValue,
   addChildItemIfEmpty,
 }: Omit<Params, "onChange">) => {
-  if (defaultValue) {
+  if (defaultValue && defaultValue.length > 0) {
     return defaultValue;
   }
 

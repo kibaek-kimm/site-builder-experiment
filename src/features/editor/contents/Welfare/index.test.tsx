@@ -40,27 +40,14 @@ describe("Welfare", () => {
     const 카드_복지항목_리스트 = screen.getAllByRole("list") as HTMLElement[];
 
     await user.type(카드헤딩[0], "첫번째 복지");
-    카드헤딩[0].blur();
     await user.type(카드_복지항목_리스트[0].children[0], "복지1-1");
     await user.type(카드_복지항목_리스트[0].children[0], "{enter}");
     await user.type(카드_복지항목_리스트[0].children[1], "복지1-2");
 
-    await act(() => {
-      카드_복지항목_리스트[0].children[1].blur();
-    });
     await user.type(카드헤딩[3], "네번째 복지");
-
-    await act(() => {
-      카드헤딩[3].blur();
-    });
-
     await user.type(카드_복지항목_리스트[3].children[0], "복지4-1");
     await user.type(카드_복지항목_리스트[3].children[0], "{enter}");
     await user.type(카드_복지항목_리스트[3].children[1], "복지4-2");
-
-    await act(() => {
-      카드_복지항목_리스트[3].children[1].blur();
-    });
 
     expect(카드헤딩[0].innerHTML).toEqual("첫번째 복지");
     expect(카드헤딩[3].innerHTML).toEqual("네번째 복지");
