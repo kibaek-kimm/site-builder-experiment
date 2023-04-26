@@ -19,12 +19,6 @@ export interface VideoContentsSectionValues extends CommonSectionValues {
   youtubeId: string;
 }
 
-export interface VisionSectionValues extends CommonSectionValues {
-  heading: string;
-  description: string;
-  image: string;
-}
-
 export interface WelfareCard extends CommonSectionValues {
   heading: string;
   descriptions: string[];
@@ -38,5 +32,4 @@ export interface WelfareValues extends CommonSectionValues {
 
 export interface BuilderValues extends CommonSectionValues {
   main: MainSectionValues;
-  vision: VisionSectionValues;
 }
