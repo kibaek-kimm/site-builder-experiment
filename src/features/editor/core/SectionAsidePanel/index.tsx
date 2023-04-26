@@ -29,7 +29,6 @@ export default function SectionAsidePanel({
 
   const handleChangeEnable = (e: ChangeEvent<HTMLInputElement>) => {
     const newEnable = e.currentTarget.checked;
-    console.log("newEnable::: ", newEnable);
 
     setEnable(newEnable);
 
