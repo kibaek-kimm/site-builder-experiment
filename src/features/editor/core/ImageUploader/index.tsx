@@ -36,7 +36,11 @@ export default function ImageUploader({ defaultImage, onUploadedFile }: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.buttonWrapper}>
-        <button className={styles.uploadButton} onClick={handleClickButton}>
+        <button
+          className={styles.uploadButton}
+          onClick={handleClickButton}
+          title="이미지 업로드"
+        >
           <span>이미지 업로드</span>
         </button>
         <input
