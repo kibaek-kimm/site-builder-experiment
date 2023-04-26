@@ -1,0 +1,77 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  padding: 160px 0;
+  background-color: #fff;
+}
+
+.innerContents {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.heading {
+  max-width: 80%;
+  margin: 0 auto 16px;
+  font-family: "Pretendard JP";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 135.8%;
+  letter-spacing: -0.0236em;
+  color: #171717;
+  text-align: center;
+}
+
+.subTitle {
+  margin-bottom: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 162.5%;
+  text-align: center;
+  letter-spacing: 0.0056em;
+  color: #8a8a8a;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  grid-template-columns: 3fr 3fr;
+}
+
+.card {
+  flex: 0 0 464px;
+}
+
+.cardImage {
+  width: 464px;
+  height: 240px;
+  position: relative;
+  margin: 0 auto 16px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardImage:nth-child(1) {
+  width: 141px;
+}
+.cardImage:nth-child(2) {
+  width: 303px;
+}
+.cardImage:nth-child(3),
+.cardImage:nth-child(4) {
+  width: 468px;
+}
+
+.cardImage:nth-child(5),
+.cardImage:nth-child(6) {
+  width: 222px;
+}

@@ -19,6 +19,11 @@ export interface VideoContentsSectionValues extends CommonSectionValues {
   youtubeId: string;
 }
 
+export interface ImageGallery1Values extends CommonSectionValues {
+  heading: string;
+  imageList: string[];
+}
+
 export interface ImageGallery2Card {
   heading: string;
   descriptions: string[];

@@ -8,6 +8,7 @@ import ImageGallery2 from "@/features/editor/contents/ImageGallery2";
 import RootLayout from "@/features/layout/RootLayout";
 import Introduction from "@/features/editor/contents/Introduction";
 import VideoContents from "@/features/editor/contents/VideoContents";
+import ImageGallery1 from "@/features/editor/contents/ImageGallery1";
 
 export default function Home() {
   const [builderValues, setBuilderValues] = useState<BuilderValues>({});
@@ -23,6 +24,7 @@ export default function Home() {
     <RootLayout>
       <Main onChange={(values) => handleChange("main", values)} />
       <Introduction />
+      <ImageGallery1 />
       <VideoContents />
       <ImageGallery2
         onChange={(values) => handleChange("imageGallery2", values)}
