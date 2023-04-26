@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: ReactNode;
   defaultEnabled?: boolean;
-  onClose: () => void;
+  onClickClose: () => void;
   onChangeEnable: (enable: boolean) => void;
 }
 
@@ -16,14 +16,14 @@ export default function SectionAsidePanel({
   title,
   description,
   defaultEnabled,
-  onClose,
+  onClickClose,
   onChangeEnable,
 }: PropsWithChildren<Props>) {
   const [enable, setEnable] = useState<boolean>(!!defaultEnabled);
 
   const handleClose = () => {
-    if (onClose) {
-      onClose();
+    if (onClickClose) {
+      onClickClose();
     }
   };
 
