@@ -13,6 +13,14 @@ export interface IntroductionSectionValues extends CommonSectionValues {
   image: string;
 }
 
+export interface InterviewSLideSectionValues extends CommonSectionValues {
+  cardList: {
+    image: string;
+    content: string;
+    interviewee: string;
+  }[];
+}
+
 export interface HighlightCardSectionValues extends CommonSectionValues {
   heading: string;
   cardList: {
