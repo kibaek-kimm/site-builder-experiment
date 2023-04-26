@@ -92,7 +92,7 @@
   list-style: none;
 }
 
-.welfareListItem::after {
+.galleryListItem::after {
   content: "";
   width: 4px;
   height: 4px;
