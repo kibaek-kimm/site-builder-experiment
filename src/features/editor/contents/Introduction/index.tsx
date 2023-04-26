@@ -10,12 +10,17 @@ import ImageUploaderList from "../../core/ImageUploader/ImageUploaderList";
 import ImageUploader from "../../core/ImageUploader";
 import { uploadImage } from "@/apis/uploadImage";
 
-export default function Introduction() {
+interface Props {
+  defaultValue?: Partial<IntroductionSectionValues>;
+  onChange?: (values: IntroductionSectionValues) => void;
+}
+
+export default function Introduction({ defaultValue, onChange }: Props) {
   const [values, setValues] = useState<IntroductionSectionValues>({
-    enable: false,
-    heading: "",
-    description: "",
-    image: "",
+    enable: defaultValue?.enable ?? false,
+    heading: defaultValue?.heading ?? "",
+    description: defaultValue?.description ?? "",
+    image: defaultValue?.image ?? "",
   });
 
   const handleChangeValues = (key: string, value: string) => {
@@ -23,6 +28,10 @@ export default function Introduction() {
     newState[key] = value;
 
     setValues(newState);
+
+    if (onChange) {
+      onChange(newState);
+    }
   };
 
   return (
@@ -68,10 +77,20 @@ export default function Introduction() {
               <div className={styles.textWrapper}>
                 <ContentEditable
                   tagName="h3"
+                  defaultValue={values.heading}
                   className={styles.heading}
-                  onInputChange={(content) => {}}
+                  onInputChange={(content) => {
+                    handleChangeValues("heading", content);
+                  }}
                 />
-                <ContentEditable tagName="p" className={styles.description} />
+                <ContentEditable
+                  tagName="p"
+                  className={styles.description}
+                  defaultValue={values.description}
+                  onInputChange={(content) => {
+                    handleChangeValues("description", content);
+                  }}
+                />
               </div>
             </div>
           </div>
