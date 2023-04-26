@@ -15,14 +15,15 @@ export default function ImageUploaderList({
   ...props
 }: Props) {
   return (
-    <div
-      className={classNames(styles.wrapper, className, {
-        [styles.column2]: column === 2,
-      })}
-      {...props}
-    >
-      {children}
-
+    <div>
+      <div
+        className={classNames(styles.wrapper, className, {
+          [styles.column2]: column === 2,
+        })}
+        {...props}
+      >
+        {children}
+      </div>
       {disclaimer && <div className={styles.disclaimer}>{disclaimer}</div>}
     </div>
   );
