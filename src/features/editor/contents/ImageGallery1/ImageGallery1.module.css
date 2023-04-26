@@ -5,6 +5,7 @@
   background-color: #fff;
 }
 
+/* FIXME: 공통으로 수정 */
 .innerContents {
   width: 960px;
   margin: 0 auto;
