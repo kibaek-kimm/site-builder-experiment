@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import ContentEditable from "@/features/editor/core/ContentEditable";
@@ -7,6 +8,11 @@ import { MainSectionValues } from "@/types";
 import Section from "@/features/editor/core/Section";
 import styles from "./Main.module.css";
 import SectionAsidePanel from "../../core/SectionAsidePanel";
+import SubTitle from "../../core/SectionAsidePanel/SubTitle";
+import ImageUploaderList from "../../core/ImageUploader/ImageUploaderList";
+import ImageUploader from "../../core/ImageUploader";
+import PanelContent from "../../core/SectionAsidePanel/PanelContent";
+import { uploadImage } from "@/apis/uploadImage";
 
 interface Props {
   defaultValues?: Partial<MainSectionValues>;
@@ -20,31 +26,6 @@ export default function Main({ defaultValues, onChange }: Props) {
     // TODO: api연동
     enable: true,
   });
-
-  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const target = e.currentTarget;
-    const file = (target.files as FileList)[0];
-
-    if (file) {
-      const formData = new FormData();
-      formData.append("image", file);
-
-      axios
-        .post("/api/upload-image", formData)
-        .then(({ data }) => {
-          const newState = { ...values };
-          newState.backgroundImage = data.path;
-          setValues(newState);
-
-          if (onChange) {
-            onChange(newState);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
 
   return (
     <Section label="메인 타이틀">
@@ -63,7 +44,31 @@ export default function Main({ defaultValues, onChange }: Props) {
                   onChange(newValues);
                 }
               }}
-            />
+            >
+              <PanelContent>
+                <SubTitle>이미지</SubTitle>
+                <ImageUploaderList>
+                  <ImageUploader
+                    defaultImage={values.backgroundImage}
+                    onUploadedFile={async (file) => {
+                      const { data, status } = await uploadImage(file);
+
+                      if (status === 200) {
+                        const newValues = {
+                          ...values,
+                          backgroundImage: data.path,
+                        };
+                        setValues(newValues);
+
+                        if (onChange) {
+                          onChange(newValues);
+                        }
+                      }
+                    }}
+                  />
+                </ImageUploaderList>
+              </PanelContent>
+            </SectionAsidePanel>
           )}
           <ContentEditable
             className={styles.heading}
@@ -79,6 +84,14 @@ export default function Main({ defaultValues, onChange }: Props) {
               }
             }}
           />
+
+          {values.backgroundImage && (
+            <div className={styles.mainImage}>
+              <img src={values.backgroundImage} alt="" />
+            </div>
+          )}
+
+          {/* /uploads/image-1682493547642.png */}
         </div>
       )}
     </Section>
