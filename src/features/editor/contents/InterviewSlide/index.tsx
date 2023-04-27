@@ -3,7 +3,7 @@ import Section from "../../core/Section";
 import SectionAsidePanel from "../../core/SectionAsidePanel";
 import PanelContent from "../../core/SectionAsidePanel/PanelContent";
 import SubTitle from "../../core/SectionAsidePanel/SubTitle";
-import { InterviewSLideSectionValues } from "@/types";
+import { InterviewSlideSectionValues } from "@/types";
 import ImageUploaderList from "../../core/ImageUploader/ImageUploaderList";
 import ImageUploader from "../../core/ImageUploader";
 import { uploadImage } from "@/apis/uploadImage";
@@ -12,14 +12,14 @@ import ContentEditable from "../../core/ContentEditable";
 import classNames from "classnames";
 
 interface Props {
-  defaultValue: InterviewSLideSectionValues;
-  onChange: (values: InterviewSLideSectionValues) => void;
+  defaultValue: InterviewSlideSectionValues;
+  onChange: (values: InterviewSlideSectionValues) => void;
 }
 
 export default function InterviewSlide({ defaultValue, onChange }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardLength, setCardLength] = useState<number>(3);
-  const [values, setValues] = useState<InterviewSLideSectionValues>({
+  const [values, setValues] = useState<InterviewSlideSectionValues>({
     enable: defaultValue?.enable ?? true,
     cardList: defaultValue?.cardList ?? [],
   });
