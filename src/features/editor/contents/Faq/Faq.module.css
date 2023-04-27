@@ -1,0 +1,102 @@
+.wrapper {
+  width: 100%;
+  padding: 120px 0;
+  background: #fff;
+}
+
+/* FIXME: 공통으로 수정 */
+.innerContents {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 960px;
+  margin: 0 auto;
+}
+
+.heading {
+  flex: 0 0 300px;
+  width: 300px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 135.8%;
+  letter-spacing: -0.0236em;
+  color: #171717;
+}
+
+.cardList {
+  flex: 0 0 632px;
+  width: 632px;
+}
+
+.faqItem {
+  padding: 24px 0;
+  border-bottom: 1px solid #e1e2e4;
+  background: #ffffff;
+  list-style: none;
+}
+
+.question {
+  position: relative;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 127.3%;
+  letter-spacing: -0.0194em;
+  color: #171717;
+}
+
+.question::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: url("/images/ico-toggle-faq@2x.png") 0 0 no-repeat;
+  background-size: 28px auto;
+}
+
+.cardDescription {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 127.3%;
+  text-align: center;
+  letter-spacing: -0.0194em;
+  color: #8a8a8a;
+}
+
+.toggleButton {
+  width: 100%;
+  background: none;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 127.3%;
+  letter-spacing: -0.0194em;
+  color: #171717;
+}
+
+.answerList {
+  margin-top: 16px;
+}
+
+.answerListItem {
+  position: relative;
+  padding-left: 12px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 162.5%;
+  letter-spacing: 0.0056em;
+  color: #8a8a8a;
+  list-style: none;
+}
+
+.answerListItem::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background: #8a8a8a;
+  position: absolute;
+  top: 8px;
+  left: 0;
+}

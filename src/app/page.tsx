@@ -11,6 +11,7 @@ import VideoContents from "@/features/editor/contents/VideoContents";
 import ImageGallery1 from "@/features/editor/contents/ImageGallery1";
 import HighlightCard from "@/features/editor/contents/HighlightCard";
 import InterviewSlide from "@/features/editor/contents/InterviewSlide";
+import Faq from "@/features/editor/contents/Faq";
 
 export default function Home() {
   const [builderValues, setBuilderValues] = useState<BuilderValues>({});
@@ -33,6 +34,7 @@ export default function Home() {
       <ImageGallery2
         onChange={(values) => handleChange("imageGallery2", values)}
       />
+      <Faq />
       {/* <div className={styles.dataArea}>
         <pre>{JSON.stringify(builderValues, null, 4)}</pre>
       </div> */}
