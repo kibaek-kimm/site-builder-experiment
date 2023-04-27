@@ -36,14 +36,16 @@ describe("SectionAsidePanel", () => {
     expect(패널설명).toBeInTheDocument();
   });
 
-  test("X클릭 시 onClose props를 호출한다.", async () => {
-    const onClose = jest.fn();
-    render(<SectionAsidePanel {...DEFAULT_PROPS} onClose={onClose} />);
+  test("X클릭 시 onClickClose props를 호출한다.", async () => {
+    const onClickClose = jest.fn();
+    render(
+      <SectionAsidePanel {...DEFAULT_PROPS} onClickClose={onClickClose} />
+    );
     const 닫기버튼 = screen.getByRole("button", { name: "닫기" });
 
     await userEvent.click(닫기버튼);
 
-    expect(onClose).toHaveBeenCalled();
+    expect(onClickClose).toHaveBeenCalled();
   });
 });
 
