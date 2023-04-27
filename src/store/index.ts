@@ -38,7 +38,7 @@ interface Store extends Metadata {
   setBuilderContents: (contents: Contents) => void;
 }
 
-const initialState: Store = {
+const initialState: Omit<Store, "setBuilderMetadata" | "setBuilderContents"> = {
   domainKey: undefined,
   primaryColor: undefined,
   logo: undefined,
