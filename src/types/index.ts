@@ -54,3 +54,10 @@ export interface ImageGallery2Values extends CommonSectionValues {
 export interface BuilderValues extends CommonSectionValues {
   main: MainSectionValues;
 }
+
+export interface FAQdSectionValues extends CommonSectionValues {
+  faqList: {
+    question: string;
+    answer: string;
+  }[];
+}
