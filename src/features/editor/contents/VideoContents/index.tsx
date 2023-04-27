@@ -5,6 +5,7 @@ import styles from "./VideoContents.module.css";
 import { VideoContentsSectionValues } from "@/types";
 import SectionAsidePanel from "../../core/SectionAsidePanel";
 import PanelContent from "../../core/SectionAsidePanel/PanelContent";
+import { extractYouTubeID } from "@/utils/extractYouTubeID";
 
 interface Props {
   defaultValue?: Partial<VideoContentsSectionValues>;
@@ -49,10 +50,23 @@ export default function VideoContents({ defaultValue, onChange }: Props) {
                     name="youtube-code"
                     placeholder="공유 코드"
                     value={youtubeId}
-                    onChange={(e) => setYoutubeId(e.target.value)}
+                    onChange={(e) => {
+                      setYoutubeId(e.target.value);
+                    }}
                   />
                   <button
-                    onClick={() => handleChangeValues("youtubeId", youtubeId)}
+                    onClick={() => {
+                      if (youtubeId) {
+                        const extractedYoutubeId = extractYouTubeID(youtubeId);
+
+                        if (extractedYoutubeId) {
+                          setYoutubeId(extractedYoutubeId);
+                          handleChangeValues("youtubeId", extractedYoutubeId);
+                        } else {
+                          alert("값이 유효하지 않습니다!");
+                        }
+                      }
+                    }}
                   >
                     연결
                   </button>
@@ -86,7 +100,7 @@ export default function VideoContents({ defaultValue, onChange }: Props) {
                     className={styles.youtube}
                     width="560"
                     height="315"
-                    src={`https://www.youtube.com/embed/${youtubeId}`}
+                    src={`https://www.youtube.com/embed/${values.youtubeId}`}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
