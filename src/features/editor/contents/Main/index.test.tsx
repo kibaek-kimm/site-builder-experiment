@@ -35,6 +35,7 @@ describe("Main", () => {
     expect(onChange).toHaveBeenCalledWith({
       heading: "즐겁게 성잘할 수 있도록",
       backgroundImage: "",
+      enable: true,
     });
   });
 
