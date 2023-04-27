@@ -1,0 +1,115 @@
+import {
+  FAQdSectionValues,
+  HighlightCardSectionValues,
+  ImageGallery1Values,
+  ImageGallery2Values,
+  InterviewSlideSectionValues,
+  IntroductionSectionValues,
+  MainSectionValues,
+  VideoContentsSectionValues,
+} from "@/types";
+import { create } from "zustand";
+
+interface Metadata {
+  domainKey?: string;
+  primaryColor?: string;
+  logo?: string;
+  contents?: Contents;
+}
+
+interface Contents {
+  main?: MainSectionValues;
+  introduction?: IntroductionSectionValues;
+  highlightCard?: HighlightCardSectionValues;
+  imageGallery1?: ImageGallery1Values;
+  interviewSlide?: InterviewSlideSectionValues;
+  // TODO 외부링크 컨텐츠 구현
+  externalContents?: any;
+  videoContents?: VideoContentsSectionValues;
+  imageGallery2?: ImageGallery2Values;
+  // TODO 채용공고
+  jobPosting?: any;
+  faq?: FAQdSectionValues;
+}
+
+interface Store extends Metadata {
+  contents?: Contents;
+  setBuilderMetadata: (metadata: Metadata) => void;
+  setBuilderContents: (contents: Contents) => void;
+}
+
+const initialState: Store = {
+  domainKey: undefined,
+  primaryColor: undefined,
+  logo: undefined,
+  contents: {
+    main: {
+      enable: true,
+      backgroundImage: "",
+      heading: "",
+    },
+    introduction: {
+      enable: true,
+      heading: "",
+      description: "",
+      image: "",
+    },
+    highlightCard: {
+      enable: true,
+      heading: "",
+      cardList: [],
+    },
+    imageGallery1: {
+      enable: true,
+      heading: "",
+      imageList: [],
+    },
+    interviewSlide: {
+      enable: true,
+      cardList: [
+        {
+          image: "",
+          content: "",
+          interviewee: "",
+        },
+      ],
+    },
+    // externalContents
+    videoContents: {
+      enable: true,
+      heading: "",
+      description: "",
+      youtubeId: "",
+    },
+    imageGallery2: {
+      enable: true,
+      heading: "",
+      children: [],
+    },
+    // jobPosting
+    faq: {
+      enable: true,
+      faqList: [],
+    },
+  },
+};
+
+const useBuilderStore = create<Store>((set, get) => ({
+  ...initialState,
+  setBuilderMetadata: (metadata) => {
+    const prevState = get();
+    set(() => ({ ...prevState, ...metadata }));
+  },
+  setBuilderContents: (contents) => {
+    const prevState = get();
+    set(() => ({
+      ...prevState,
+      contents: {
+        ...prevState.contents,
+        ...contents,
+      },
+    }));
+  },
+}));
+
+export default useBuilderStore;
