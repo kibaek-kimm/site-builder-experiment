@@ -78,14 +78,13 @@ export default function InterviewSlide({ defaultValue, onChange }: Props) {
                 <select
                   name=""
                   id=""
+                  defaultValue="3"
                   onChange={(e) => {
                     setCardLength(Number(e.target.value));
                   }}
                 >
                   <option value="2">2</option>
-                  <option value="3" selected>
-                    3
-                  </option>
+                  <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>

@@ -52,6 +52,7 @@ export default function Faq({ defaultValue, onChange }: Props) {
               <PanelContent>
                 <SubTitle>카드 개수</SubTitle>
                 <select
+                  defaultValue="5"
                   name=""
                   id=""
                   onChange={(e) => {
@@ -61,9 +62,7 @@ export default function Faq({ defaultValue, onChange }: Props) {
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
-                  <option value="5" selected>
-                    5
-                  </option>
+                  <option value="5">5</option>
                 </select>
               </PanelContent>
             </SectionAsidePanel>
