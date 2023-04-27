@@ -8,6 +8,7 @@
 .innerContents {
   width: 960px;
   height: 418px;
+  position: relative;
   margin: 0 auto;
 }
 
