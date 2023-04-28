@@ -15,6 +15,8 @@ interface Metadata {
   primaryColor?: string;
   logo?: string;
   contents?: Contents;
+  enableCompanyWebsite?: boolean;
+  companyWebsite?: string;
 }
 
 interface Contents {
@@ -40,8 +42,10 @@ interface Store extends Metadata {
 
 const initialState: Omit<Store, "setBuilderMetadata" | "setBuilderContents"> = {
   domainKey: undefined,
-  primaryColor: undefined,
+  primaryColor: "#3366FF",
   logo: undefined,
+  companyWebsite: undefined,
+  enableCompanyWebsite: true,
   contents: {
     main: {
       enable: true,

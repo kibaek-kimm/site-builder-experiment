@@ -1,0 +1,52 @@
+.wrapper {
+  width: 100%;
+  height: 64px;
+  padding: 0 32px;
+  background: #fff;
+}
+
+/* FIXME: 공통으로 수정 */
+.innerContents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 960px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+}
+
+.logo img {
+  max-width: 120px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menuList {
+  display: flex;
+  align-items: center;
+  gap: 0 48px;
+}
+
+.menuList li a {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 0.0056em;
+  color: #171717;
+}
+
+.companyWebsite {
+  padding: 9px 20px;
+  border: 1px solid #e1e2e4;
+  border-radius: 1000px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 146.7%;
+  letter-spacing: 0.0096em;
+  color: #171717;
+}

@@ -12,9 +12,13 @@ import ImageGallery1 from "@/features/editor/contents/ImageGallery1";
 import HighlightCard from "@/features/editor/contents/HighlightCard";
 import InterviewSlide from "@/features/editor/contents/InterviewSlide";
 import Faq from "@/features/editor/contents/Faq";
+import Header from "@/features/editor/contents/Header";
+import useBuilderStore from "@/store";
 
 export default function Home() {
   const [builderValues, setBuilderValues] = useState<BuilderValues>({});
+  const { setBuilderMetadata, logo, companyWebsite, enableCompanyWebsite } =
+    useBuilderStore();
 
   const handleChange = (key, values) => {
     setBuilderValues((prevState) => ({
@@ -25,6 +29,11 @@ export default function Home() {
 
   return (
     <RootLayout>
+      <Header
+        logo={logo}
+        enableCompanyWebsite={enableCompanyWebsite}
+        companyWebsite={companyWebsite}
+      />
       <Main onChange={(values) => handleChange("main", values)} />
       <Introduction />
       <HighlightCard />
