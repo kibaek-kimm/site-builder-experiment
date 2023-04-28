@@ -16,6 +16,8 @@
 }
 
 .logo {
+  max-height: 64px;
+  overflow: hidden;
 }
 
 .logo img {
