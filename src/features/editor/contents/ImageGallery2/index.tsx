@@ -71,8 +71,8 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
                     <>
                       파일 규격 jpg, png, gif
                       <br />
-                      권장 최소 가로 크기 <strong>2880px</strong> , 최대 이미지
-                      크기 <strong>5M</strong>
+                      권장 최소 가로 크기 <strong>976px</strong> , 최대 이미지
+                      크기 <strong>2M</strong>
                     </>
                   }
                 >
