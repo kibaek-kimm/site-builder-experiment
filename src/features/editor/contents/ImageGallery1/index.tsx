@@ -45,7 +45,7 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
   }, []);
 
   return (
-    <Section label="이미지 갤러리 II">
+    <Section label="이미지 갤러리 I">
       {({ active, setActive }) => (
         <>
           {active && (

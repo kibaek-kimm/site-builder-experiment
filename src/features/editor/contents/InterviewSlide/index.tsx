@@ -56,7 +56,7 @@ export default function InterviewSlide({ defaultValue, onChange }: Props) {
   };
 
   return (
-    <Section lable="인터뷰 슬라이드">
+    <Section label="인터뷰 슬라이드">
       {({ active, setActive }) => (
         <>
           {active && (
