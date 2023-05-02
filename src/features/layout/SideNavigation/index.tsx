@@ -3,14 +3,16 @@ import styles from "./SideNavigation.module.css";
 import ImageUploaderList from "@/features/editor/core/ImageUploader/ImageUploaderList";
 import ImageUploader from "@/features/editor/core/ImageUploader";
 import { useRef, useState } from "react";
-import classNames from "classnames";
 import { uploadImage } from "@/apis/uploadImage";
+import PanelBrandColor from "./PanelBrandColor";
 
 export default function SideNavigation() {
   const colorPickerRef = useRef<HTMLInputElement>(null);
-  const [customPrimaryColor, setCustomPrimaryColor] = useState<string>("");
   const { setBuilderMetadata, primaryColor, enableCompanyWebsite } =
     useBuilderStore();
+  const [customPrimaryColor, setCustomPrimaryColor] = useState<string>(
+    primaryColor as string
+  );
 
   return (
     <aside className={styles.wrapper}>
@@ -31,43 +33,12 @@ export default function SideNavigation() {
       </div>
       <div className={styles.group}>
         <div className={styles.subTitle}>브랜드 컬러</div>
-        <div className={styles.primaryColorWrapper}>
-          <button
-            className={styles.colorPickerButton}
-            style={{ backgroundColor: primaryColor }}
-            onClick={() => {
-              if (colorPickerRef.current) {
-                colorPickerRef.current.click();
-              }
-            }}
-          />
-          <input
-            type="color"
-            ref={colorPickerRef}
-            defaultValue={primaryColor}
-            className={styles.colorInput}
-            onChange={(e) =>
-              setBuilderMetadata({ primaryColor: e.target.value })
-            }
-          />
-
-          <div className={styles.primaryColorField}>
-            <input
-              className={styles.input}
-              placeholder={primaryColor}
-              value={customPrimaryColor}
-              onChange={(e) => setCustomPrimaryColor(e.target.value)}
-            />
-            <button
-              onClick={() => {
-                setBuilderMetadata({ primaryColor: customPrimaryColor });
-                setCustomPrimaryColor("");
-              }}
-            >
-              적용
-            </button>
-          </div>
-        </div>
+        <PanelBrandColor
+          defaultValue={primaryColor}
+          onChangeComplete={(color) =>
+            setBuilderMetadata({ primaryColor: color })
+          }
+        />
       </div>
       <div className={styles.group}>
         <div className={styles.subTitle}>로고 이미지</div>
