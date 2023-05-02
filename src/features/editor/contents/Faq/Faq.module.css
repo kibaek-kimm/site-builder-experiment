@@ -90,6 +90,10 @@
   list-style: none;
 }
 
+.answerListItem:last-child {
+  margin-bottom: 0;
+}
+
 .answerListItem::after {
   content: "";
   width: 4px;
