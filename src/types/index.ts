@@ -58,7 +58,7 @@ export interface BuilderValues extends CommonSectionValues {
 export interface FAQdSectionValues extends CommonSectionValues {
   faqList: {
     question: string;
-    answer: string;
+    answer: string[];
   }[];
 }
 
