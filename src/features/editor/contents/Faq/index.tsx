@@ -71,7 +71,7 @@ export default function Faq({ defaultValue, onChange }: Props) {
             <div className={styles.innerContents}>
               <h2>자주 묻는 질문</h2>
 
-              <ul className={styles.cardList}>
+              <ul className={styles.cardList} data-testid="faq-list">
                 {Array.from({ length: cardLength }, (_, index) => (
                   <li key={index} className={styles.faqItem}>
                     <a className={styles.toggleButton}>
@@ -91,7 +91,7 @@ export default function Faq({ defaultValue, onChange }: Props) {
                           } else {
                             faqList[index] = {
                               question: content,
-                              answer: "",
+                              answer: [],
                             };
                           }
 
@@ -100,26 +100,17 @@ export default function Faq({ defaultValue, onChange }: Props) {
                       />
                     </a>
                     <StructuredContentEditable
-                      tagName="p"
                       parentNode={<ul className={styles.answerList} />}
                       childNode={<li className={styles.answerListItem} />}
-                      className={styles.cardDescription}
                       defaultValue={
                         values.faqList.length > index
                           ? values.faqList[index]?.answer
                           : []
                       }
-                      onInputChange={(content) => {
+                      onChange={(content: string[]) => {
                         const { faqList } = { ...values };
 
-                        if (values.faqList.length > index) {
-                          faqList[index].answer = content;
-                        } else {
-                          faqList[index] = {
-                            question: "",
-                            answer: content,
-                          };
-                        }
+                        faqList[index].answer = content;
                         handleChangeValues("faqList", faqList);
                       }}
                     />
