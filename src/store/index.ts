@@ -34,13 +34,16 @@ interface Contents {
   faq?: FAQdSectionValues;
 }
 
-interface Store extends Metadata {
+export interface BuilderStore extends Metadata {
   contents?: Contents;
   setBuilderMetadata: (metadata: Metadata) => void;
   setBuilderContents: (contents: Contents) => void;
 }
 
-const initialState: Omit<Store, "setBuilderMetadata" | "setBuilderContents"> = {
+const initialState: Omit<
+  BuilderStore,
+  "setBuilderMetadata" | "setBuilderContents"
+> = {
   domainKey: undefined,
   primaryColor: "#3366FF",
   logo: undefined,
@@ -98,7 +101,7 @@ const initialState: Omit<Store, "setBuilderMetadata" | "setBuilderContents"> = {
   },
 };
 
-const useBuilderStore = create<Store>((set, get) => ({
+const useBuilderStore = create<BuilderStore>((set, get) => ({
   ...initialState,
   setBuilderMetadata: (metadata) => {
     const prevState = get();
