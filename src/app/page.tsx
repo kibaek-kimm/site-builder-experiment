@@ -14,6 +14,7 @@ import InterviewSlide from "@/features/editor/contents/InterviewSlide";
 import Faq from "@/features/editor/contents/Faq";
 import Header from "@/features/editor/contents/Header";
 import useBuilderStore from "@/store";
+import Footer from "@/features/editor/contents/Footer";
 
 export default function Home() {
   const [builderValues, setBuilderValues] = useState<BuilderValues>({});
@@ -44,6 +45,7 @@ export default function Home() {
         onChange={(values) => handleChange("imageGallery2", values)}
       />
       <Faq />
+      <Footer />
       {/* <div className={styles.dataArea}>
         <pre>{JSON.stringify(builderValues, null, 4)}</pre>
       </div> */}

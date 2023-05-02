@@ -61,3 +61,8 @@ export interface FAQdSectionValues extends CommonSectionValues {
     answer: string;
   }[];
 }
+
+export interface FooterValues {
+  companyName: string;
+  companyInfo: string;
+}
