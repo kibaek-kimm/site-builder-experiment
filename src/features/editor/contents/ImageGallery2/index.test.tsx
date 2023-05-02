@@ -151,15 +151,26 @@ describe("ImageGallery2", () => {
     ) as HTMLElement[];
     const 카드_복지항목_리스트 = screen.getAllByRole("list");
 
+    await user.clear(메인헤딩);
     await user.type(메인헤딩, "복지 타이틀");
 
+    await user.clear(카드헤딩[0]);
     await user.type(카드헤딩[0], "첫번째 복지");
+
+    await user.clear(카드_복지항목_리스트[0].children[0]);
     await user.type(카드_복지항목_리스트[0].children[0], "복지1-1");
     await user.type(카드_복지항목_리스트[0].children[0], "{enter}");
+
+    await user.clear(카드_복지항목_리스트[0].children[1]);
     await user.type(카드_복지항목_리스트[0].children[1], "복지1-2");
+
+    await user.clear(카드헤딩[3]);
     await user.type(카드헤딩[3], "네번째 복지");
+
+    await user.clear(카드_복지항목_리스트[3].children[0]);
     await user.type(카드_복지항목_리스트[3].children[0], "복지4-1");
     await user.type(카드_복지항목_리스트[3].children[0], "{enter}");
+    await user.clear(카드_복지항목_리스트[3].children[1]);
     await user.type(카드_복지항목_리스트[3].children[1], "복지4-2");
     await user.click(document.body);
 
