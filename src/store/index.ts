@@ -69,6 +69,7 @@ const initialState: Omit<
     imageGallery1: {
       enable: true,
       heading: "",
+      description: "",
       imageList: [],
     },
     interviewSlide: {
@@ -91,7 +92,7 @@ const initialState: Omit<
     imageGallery2: {
       enable: true,
       heading: "",
-      children: [],
+      cardList: [],
     },
     // jobPosting
     faq: {
