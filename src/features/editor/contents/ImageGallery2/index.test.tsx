@@ -64,7 +64,7 @@ describe("ImageGallery2", () => {
         defaultValues={{
           enable: true,
           heading: "복지 타이틀 기본값",
-          children: [
+          cardList: [
             {
               heading: "첫번째 복지",
               descriptions: ["복지1-1", "복지1-2"],
@@ -176,7 +176,7 @@ describe("ImageGallery2", () => {
 
     expect(onChange).toHaveBeenLastCalledWith({
       heading: "복지 타이틀",
-      children: [
+      cardList: [
         {
           heading: "첫번째 복지",
           descriptions: ["복지1-1", "복지1-2"],

@@ -25,7 +25,7 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
   const [values, setValues] = useState<ImageGallery2Values>({
     enable: defaultValues?.enable ?? false,
     heading: defaultValues?.heading ?? "",
-    children: defaultValues?.children ?? DEFAULT_GALLERY2_CARD_LIST,
+    cardList: defaultValues?.cardList ?? DEFAULT_GALLERY2_CARD_LIST,
   });
 
   const handleChangeValues = (key: string, value: string) => {
@@ -79,14 +79,14 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
                   {Array.from({ length: 4 }, (_, index) => (
                     <ImageUploader
                       key={index}
-                      defaultImage={values.children[index]?.image}
+                      defaultImage={values.cardList[index]?.image}
                       onUploadedFile={async (file) => {
                         const { data, status } = await uploadImage(file);
 
                         if (status === 200) {
-                          const { children } = { ...values };
-                          children[index].image = data.path;
-                          handleChangeValues("children", children);
+                          const { cardList } = { ...values };
+                          cardList[index].image = data.path;
+                          handleChangeValues("cardList", children);
                         }
                       }}
                     />
@@ -108,7 +108,7 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
               />
 
               <div className={styles.cardWrapper}>
-                {values.children.map((card, index) => (
+                {values.cardList.map((card, index) => (
                   <div
                     key={`image-gallery2-info-${index}`}
                     className={styles.card}
@@ -122,18 +122,18 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
                       placeholder="복지 섹션의 제목을 입력해주세요."
                       className={styles.cardHeading}
                       onInputChange={(content) => {
-                        const { children } = { ...values };
-                        children[index].heading = content;
-                        handleChangeValues("children", children);
+                        const { cardList } = { ...values };
+                        cardList[index].heading = content;
+                        handleChangeValues("cardList", cardList);
                       }}
                     />
                     <StructuredContentEditable
                       defaultValue={card.descriptions}
                       parentNode={<ul className={styles.galleryList} />}
                       onChange={(content) => {
-                        const { children } = { ...values };
-                        children[index].heading = content;
-                        handleChangeValues("children", children);
+                        const { cardList } = { ...values };
+                        cardList[index].heading = content;
+                        handleChangeValues("cardList", cardList);
                       }}
                       childNode={
                         <li

@@ -49,7 +49,7 @@ export interface ImageGallery2Card {
 
 export interface ImageGallery2Values extends CommonSectionValues {
   heading: string;
-  children: ImageGallery2Card[];
+  cardList: ImageGallery2Card[];
 }
 
 export interface BuilderValues extends CommonSectionValues {
