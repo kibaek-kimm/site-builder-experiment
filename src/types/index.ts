@@ -37,6 +37,7 @@ export interface VideoContentsSectionValues extends CommonSectionValues {
 
 export interface ImageGallery1Values extends CommonSectionValues {
   heading: string;
+  description: string;
   imageList: string[];
 }
 

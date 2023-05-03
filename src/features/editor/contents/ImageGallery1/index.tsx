@@ -24,6 +24,7 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
   const [values, setValues] = useState<ImageGallery1Values>({
     enable: defaultValues?.enable ?? false,
     heading: defaultValues?.heading ?? "",
+    description: defaultValues?.description ?? "",
     imageList: ["", "", "", "", "", ""],
   });
 
@@ -112,7 +113,7 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
                 placeholder="최고의 일상과 성과를 위한 다양한 지원을 제공합니다"
                 defaultValue={values.heading}
                 onInputChange={(content) => {
-                  handleChangeValues("heading", content);
+                  handleChangeValues("description", content);
                 }}
               />
 
