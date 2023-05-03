@@ -2,7 +2,7 @@
 
 import styles from "./page.module.css";
 import { useState } from "react";
-import Main from "@/features/editor/contents/Main";
+import MainTitle from "@/features/editor/contents/MainTitle";
 import { BuilderValues } from "@/types";
 import ImageGallery2 from "@/features/editor/contents/ImageGallery2";
 import RootLayout from "@/features/layout/RootLayout";
@@ -35,7 +35,7 @@ export default function Home() {
         enableCompanyWebsite={enableCompanyWebsite}
         companyWebsite={companyWebsite}
       />
-      <Main onChange={(values) => handleChange("main", values)} />
+      <MainTitle onChange={(values) => handleChange("main", values)} />
       <Introduction />
       <HighlightCard />
       <ImageGallery1 />

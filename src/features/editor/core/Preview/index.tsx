@@ -1,6 +1,6 @@
 import { BuilderStore } from "@/store";
 import Header from "../../contents/Header";
-import MainView from "../../contents/Main/MainView";
+import MainTitleView from "../../contents/MainTitle/MainTitleView";
 import IndroductionView from "../../contents/Introduction/IndroductionView";
 import HighlightCardView from "../../contents/HighlightCard/HighlightCardView";
 import ImageGallery1View from "../../contents/ImageGallery1/ImageGallery1View";
@@ -17,7 +17,7 @@ export default function Preview({ contents }: PreviewProps) {
     <>
       <Header />
       {contents?.main?.enable && (
-        <MainView
+        <MainTitleView
           heading={contents?.main?.heading}
           backgroundImage={contents?.main?.backgroundImage}
         />

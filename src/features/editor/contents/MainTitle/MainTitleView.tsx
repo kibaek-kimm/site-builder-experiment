@@ -1,7 +1,7 @@
 import { MainSectionValues } from "@/types";
-import styles from "./Main.module.css";
+import styles from "./MainTitle.module.css";
 
-export default function MainView({
+export default function MainTitleView({
   heading,
   backgroundImage,
 }: Omit<MainSectionValues, "enable">) {

@@ -2,11 +2,10 @@
 "use client";
 
 import ContentEditable from "@/features/editor/core/ContentEditable";
-import { ChangeEvent, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { MainSectionValues } from "@/types";
 import Section from "@/features/editor/core/Section";
-import styles from "./Main.module.css";
+import styles from "./MainTitle.module.css";
 import SectionAsidePanel from "../../core/SectionAsidePanel";
 import SubTitle from "../../core/SectionAsidePanel/SubTitle";
 import ImageUploaderList from "../../core/ImageUploader/ImageUploaderList";
@@ -19,7 +18,7 @@ interface Props {
   onChange?: (values: MainSectionValues) => void;
 }
 
-export default function Main({ defaultValues, onChange }: Props) {
+export default function MainTitle({ defaultValues, onChange }: Props) {
   const [values, setValues] = useState<MainSectionValues>({
     heading: defaultValues?.heading ?? "",
     backgroundImage: defaultValues?.backgroundImage ?? "",
