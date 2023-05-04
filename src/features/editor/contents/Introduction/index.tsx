@@ -17,7 +17,7 @@ interface Props {
 
 export default function Introduction({ defaultValue, onChange }: Props) {
   const [values, setValues] = useState<IntroductionSectionValues>({
-    enable: defaultValue?.enable ?? false,
+    enable: defaultValue?.enable ?? true,
     heading: defaultValue?.heading ?? "",
     description: defaultValue?.description ?? "",
     image: defaultValue?.image ?? "",

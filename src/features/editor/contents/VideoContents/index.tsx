@@ -15,7 +15,7 @@ interface Props {
 export default function VideoContents({ defaultValue, onChange }: Props) {
   const [youtubeId, setYoutubeId] = useState<string>("");
   const [values, setValues] = useState<VideoContentsSectionValues>({
-    enable: defaultValue?.enable ?? false,
+    enable: defaultValue?.enable ?? true,
     heading: defaultValue?.heading ?? "",
     description: defaultValue?.description ?? "",
     youtubeId: defaultValue?.youtubeId ?? "",

@@ -23,7 +23,7 @@ interface Props {
 
 export default function ImageGallery2({ defaultValues, onChange }: Props) {
   const [values, setValues] = useState<ImageGallery2Values>({
-    enable: defaultValues?.enable ?? false,
+    enable: defaultValues?.enable ?? true,
     heading: defaultValues?.heading ?? "",
     cardList: defaultValues?.cardList ?? DEFAULT_GALLERY2_CARD_LIST,
   });

@@ -22,7 +22,7 @@ interface Props {
 
 export default function ImageGallery2({ defaultValues, onChange }: Props) {
   const [values, setValues] = useState<ImageGallery1Values>({
-    enable: defaultValues?.enable ?? false,
+    enable: defaultValues?.enable ?? true,
     heading: defaultValues?.heading ?? "",
     description: defaultValues?.description ?? "",
     imageList: ["", "", "", "", "", ""],
