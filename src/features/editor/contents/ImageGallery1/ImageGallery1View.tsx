@@ -12,8 +12,14 @@ export default function ImageGallery1View({
   return (
     <div className={styles.wrapper}>
       <div className={styles.innerContents}>
-        <h2 className={styles.heading}>{heading}</h2>
-        <h3 className={styles.subTitle}>{description}</h3>
+        <h2
+          className={styles.heading}
+          dangerouslySetInnerHTML={{ __html: heading }}
+        />
+        <h3
+          className={styles.subTitle}
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
 
         {imageList && imageList.length > 0 && (
           <ul className={styles.cardWrapper}>

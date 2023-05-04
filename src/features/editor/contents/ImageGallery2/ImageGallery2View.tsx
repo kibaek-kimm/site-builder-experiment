@@ -20,13 +20,18 @@ export default function ImageGallery2View({
                 {card.image && <img src={card.image} alt="" />}
               </div>
 
-              <h3 className={styles.cardHeading}>{card.heading}</h3>
+              <h3
+                className={styles.cardHeading}
+                dangerouslySetInnerHTML={{ __html: card.heading }}
+              />
 
               <ul className={styles.galleryList}>
                 {card.descriptions.map((description, index) => (
-                  <li key={index} className={styles.galleryListItem}>
-                    {description}
-                  </li>
+                  <li
+                    key={index}
+                    className={styles.galleryListItem}
+                    dangerouslySetInnerHTML={{ __html: description }}
+                  />
                 ))}
               </ul>
             </div>

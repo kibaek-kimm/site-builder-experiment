@@ -31,9 +31,15 @@ export default function InterviewSlideView({
                 {card.image && <img src={card.image} alt="" />}
               </div>
 
-              <div className={styles.content}>{card.content}</div>
+              <div
+                className={styles.content}
+                dangerouslySetInnerHTML={{ __html: card.content }}
+              />
 
-              <p className={styles.interviewee}>{card.interviewee}</p>
+              <p
+                className={styles.interviewee}
+                dangerouslySetInnerHTML={{ __html: card.interviewee }}
+              />
             </div>
           ))}
         </div>

@@ -10,8 +10,14 @@ export default function VideoContentsView({
     <div className={styles.wrapper}>
       <div className={styles.innerContents}>
         <div className={styles.textWrapper}>
-          <h3 className={styles.heading}>{heading}</h3>
-          <p className={styles.description}>{description}</p>
+          <h3
+            className={styles.heading}
+            dangerouslySetInnerHTML={{ __html: heading }}
+          />
+          <p
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
         <div className={styles.videoWrapper}>
           {youtubeId && (
