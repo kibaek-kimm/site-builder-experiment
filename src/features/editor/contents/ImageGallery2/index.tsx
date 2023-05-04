@@ -132,7 +132,7 @@ export default function ImageGallery2({ defaultValues, onChange }: Props) {
                       parentNode={<ul className={styles.galleryList} />}
                       onChange={(content) => {
                         const { cardList } = { ...values };
-                        cardList[index].heading = content;
+                        cardList[index].descriptions = content;
                         handleChangeValues("cardList", cardList);
                       }}
                       childNode={
