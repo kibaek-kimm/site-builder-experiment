@@ -1,10 +1,19 @@
 "use client";
 
 import Preview from "@/features/editor/core/Preview";
-import useBuilderStore from "@/store";
+import { getPreviewData } from "@/utils/getPreviewData";
+import { useEffect, useState } from "react";
 
 export default function PreviewPage() {
-  const { setBuilderContents, setBuilderMetadata, ...state } =
-    useBuilderStore();
-  return <Preview {...state} />;
+  const [isReady, setIsReady] = useState<boolean>();
+  const previewState = getPreviewData() ?? {};
+
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
+
+  if (!isReady) {
+    return null;
+  }
+  return <Preview {...previewState} />;
 }

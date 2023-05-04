@@ -1,12 +1,22 @@
-import Link from "next/link";
 import styles from "./GlobalNavigation.module.css";
+import useBuilderStore from "@/store";
+import { setPreviewData } from "@/utils/setPreviewData";
 
 export default function GlobalNavigation() {
+  const { setBuilderContents, setBuilderMetadata, ...state } =
+    useBuilderStore();
+
+  const handleClickPreview = () => {
+    const result = setPreviewData(state);
+
+    if (result) {
+      window.open("/preview", "eb-site-preview");
+    }
+  };
+
   return (
     <header className={styles.gnb}>
-      <Link href="/preview" target="_blank">
-        <button>미리보기</button>
-      </Link>
+      <button onClick={handleClickPreview}>미리보기</button>
     </header>
   );
 }
