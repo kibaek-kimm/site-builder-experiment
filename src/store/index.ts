@@ -20,7 +20,7 @@ interface Metadata {
 }
 
 interface Contents {
-  main?: MainSectionValues;
+  mainTitle?: MainSectionValues;
   introduction?: IntroductionSectionValues;
   highlightCard?: HighlightCardSectionValues;
   imageGallery1?: ImageGallery1Values;
@@ -50,7 +50,7 @@ const initialState: Omit<
   companyWebsite: undefined,
   enableCompanyWebsite: true,
   contents: {
-    main: {
+    mainTitle: {
       enable: true,
       backgroundImage: "",
       heading: "",

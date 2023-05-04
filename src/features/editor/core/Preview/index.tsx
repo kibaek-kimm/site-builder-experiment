@@ -16,10 +16,10 @@ export default function Preview({ contents }: PreviewProps) {
   return (
     <>
       <Header />
-      {contents?.main?.enable && (
+      {contents?.mainTitle?.enable && (
         <MainTitleView
-          heading={contents?.main?.heading}
-          backgroundImage={contents?.main?.backgroundImage}
+          heading={contents?.mainTitle?.heading}
+          backgroundImage={contents?.mainTitle?.backgroundImage}
         />
       )}
       {contents?.introduction?.enable && (
