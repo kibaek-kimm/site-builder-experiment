@@ -7,7 +7,7 @@ import ImageGallery1View from "../../contents/ImageGallery1/ImageGallery1View";
 import InterviewSlideView from "../../contents/InterviewSlide/InterviewSlideView";
 import VideoContentsView from "../../contents/VideoContents/VideoContentsView";
 import ImageGallery2View from "../../contents/ImageGallery2/ImageGallery2View";
-import FaqView from "../../contents/Faq/\bFaqView";
+import FaqView from "../../contents/Faq/FaqView";
 
 interface PreviewProps
   extends Omit<BuilderStore, "setBuilderMetadata" | "setBuilderContents"> {}
