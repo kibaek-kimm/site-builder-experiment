@@ -10,7 +10,7 @@ export default function GlobalNavigation() {
     const result = setPreviewData(state);
 
     if (result) {
-      window.open("/preview", "eb-site-preview");
+      window.open("/preview");
     }
   };
 
