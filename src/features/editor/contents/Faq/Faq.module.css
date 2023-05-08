@@ -29,7 +29,6 @@
 }
 
 .faqItem {
-  padding: 24px 0;
   border-bottom: 1px solid #e1e2e4;
   background: #ffffff;
   list-style: none;
@@ -37,6 +36,7 @@
 
 .question {
   position: relative;
+  padding-right: 32px;
   font-weight: 600;
   font-size: 22px;
   line-height: 127.3%;
@@ -66,16 +66,25 @@
 
 .toggleButton {
   width: 100%;
+  display: block;
+  padding: 24px 0;
   background: none;
   font-weight: 600;
   font-size: 22px;
   line-height: 127.3%;
   letter-spacing: -0.0194em;
   color: #171717;
+  cursor: pointer;
 }
 
 .answerList {
-  margin-top: 16px;
+  display: none;
+  padding-bottom: 24px;
+  padding-left: 10px;
+}
+
+.active .answerList {
+  display: block;
 }
 
 .answerListItem {

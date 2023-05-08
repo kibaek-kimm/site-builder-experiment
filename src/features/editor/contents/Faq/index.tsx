@@ -7,6 +7,7 @@ import styles from "./Faq.module.css";
 import { FAQdSectionValues } from "@/types";
 import ContentEditable from "../../core/ContentEditable";
 import StructuredContentEditable from "../../core/StructuredContentEditable";
+import classNames from "classnames";
 
 interface Props {
   defaultValue: FAQdSectionValues;
@@ -73,7 +74,10 @@ export default function Faq({ defaultValue, onChange }: Props) {
 
               <ul className={styles.cardList} data-testid="faq-list">
                 {Array.from({ length: cardLength }, (_, index) => (
-                  <li key={index} className={styles.faqItem}>
+                  <li
+                    key={index}
+                    className={classNames(styles.faqItem, styles.active)}
+                  >
                     <a className={styles.toggleButton}>
                       <ContentEditable
                         tagName="div"
