@@ -8,14 +8,24 @@ import InterviewSlideView from "../../contents/InterviewSlide/InterviewSlideView
 import VideoContentsView from "../../contents/VideoContents/VideoContentsView";
 import ImageGallery2View from "../../contents/ImageGallery2/ImageGallery2View";
 import FaqView from "../../contents/Faq/FaqView";
+import Footer from "../../contents/Footer";
 
 interface PreviewProps
   extends Omit<BuilderStore, "setBuilderMetadata" | "setBuilderContents"> {}
 
-export default function Preview({ contents }: PreviewProps) {
+export default function Preview({
+  logo,
+  companyWebsite,
+  enableCompanyWebsite,
+  contents,
+}: PreviewProps) {
   return (
     <>
-      <Header />
+      <Header
+        logo={logo}
+        enableCompanyWebsite={enableCompanyWebsite}
+        companyWebsite={companyWebsite}
+      />
       {contents?.mainTitle?.enable && (
         <MainTitleView
           heading={contents?.mainTitle?.heading}
@@ -64,6 +74,10 @@ export default function Preview({ contents }: PreviewProps) {
       )}
 
       {contents?.faq?.enable && <FaqView faqList={contents?.faq.faqList} />}
+      <Footer
+        companyName="(주)원티드랩"
+        companyInfo="사업자 등록번호 : 000-00-00000 | 대표 : 김티드<br/>06236 서울특별시 강남구 테헤란로 142, 12층 (역삼동, 아크플레이스)"
+      />
     </>
   );
 }

@@ -25,7 +25,11 @@ export default function Header({
           </li>
           {enableCompanyWebsite && companyWebsite && (
             <li>
-              <a href={companyWebsite} className={styles.companyWebsite}>
+              <a
+                href={companyWebsite}
+                className={styles.companyWebsite}
+                target="_blank"
+              >
                 기업 사이트
               </a>
             </li>

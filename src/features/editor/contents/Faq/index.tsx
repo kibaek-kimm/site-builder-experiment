@@ -10,8 +10,8 @@ import StructuredContentEditable from "../../core/StructuredContentEditable";
 import classNames from "classnames";
 
 interface Props {
-  defaultValue: FAQdSectionValues;
-  onChange: (values: FAQdSectionValues) => void;
+  defaultValue?: FAQdSectionValues;
+  onChange?: (values: FAQdSectionValues) => void;
 }
 
 export default function Faq({ defaultValue, onChange }: Props) {

@@ -34,7 +34,7 @@
   object-fit: cover;
 }
 
-.cardItem {
+.cardItemForEdit {
   display: none;
   width: 100%;
   height: 100%;
@@ -45,8 +45,16 @@
   box-sizing: border-box;
 }
 
-.cardItem.active {
+.cardItemForEdit.active {
   display: block;
+}
+
+.cardItem {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+  box-sizing: border-box;
 }
 
 .content {

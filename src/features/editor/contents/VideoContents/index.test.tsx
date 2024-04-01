@@ -52,7 +52,7 @@ describe("VideoContents", () => {
       heading: "비전의 제목을 입력합니다.",
       description: "비전의 설명을 입력합니다.",
       youtubeId: "",
-      enable: false,
+      enable: true,
     });
   });
 

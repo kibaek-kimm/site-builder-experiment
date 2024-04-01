@@ -40,6 +40,7 @@ describe("Faq", () => {
     render(
       <Faq
         defaultValue={{
+          enable: true,
           faqList: [
             {
               question: "질문1",
@@ -60,6 +61,7 @@ describe("Faq", () => {
     ) as NodeList;
 
     const 답변리스트 = FAQ리스트.querySelectorAll("ul");
+    console.log("답변리스트:::: ", 답변리스트);
 
     expect(질문리스트[0]).toHaveTextContent("질문1");
     expect(Array.from(답변리스트[0].children)[0]).toHaveTextContent("답변1-1");

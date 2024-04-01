@@ -146,7 +146,7 @@ export default function InterviewSlide({ defaultValue, onChange }: Props) {
                 {Array.from({ length: cardLength }, (_, index) => (
                   <div
                     key={index}
-                    className={classNames(styles.cardItem, {
+                    className={classNames(styles.cardItemForEdit, {
                       [styles.active]: activeIndex === index,
                     })}
                   >

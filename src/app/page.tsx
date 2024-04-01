@@ -17,15 +17,19 @@ import useBuilderStore from "@/store";
 import Footer from "@/features/editor/contents/Footer";
 
 export default function Home() {
-  const [builderValues, setBuilderValues] = useState<BuilderValues>({});
-  const { setBuilderMetadata, logo, companyWebsite, enableCompanyWebsite } =
-    useBuilderStore();
+  const {
+    setBuilderMetadata,
+    setBuilderContents,
+    logo,
+    companyWebsite,
+    enableCompanyWebsite,
+    contents,
+  } = useBuilderStore();
 
   const handleChange = (key, values) => {
-    setBuilderValues((prevState) => ({
-      ...prevState,
+    setBuilderContents({
       [key]: values,
-    }));
+    });
   };
 
   return (
@@ -35,16 +39,26 @@ export default function Home() {
         enableCompanyWebsite={enableCompanyWebsite}
         companyWebsite={companyWebsite}
       />
-      <MainTitle onChange={(values) => handleChange("main", values)} />
-      <Introduction />
-      <HighlightCard />
-      <ImageGallery1 />
-      <InterviewSlide />
-      <VideoContents />
+      <MainTitle onChange={(values) => handleChange("mainTitle", values)} />
+      <Introduction
+        onChange={(values) => handleChange("introduction", values)}
+      />
+      <HighlightCard
+        onChange={(values) => handleChange("highlightCard", values)}
+      />
+      <ImageGallery1
+        onChange={(values) => handleChange("imageGallery1", values)}
+      />
+      <InterviewSlide
+        onChange={(values) => handleChange("interviewSlide", values)}
+      />
+      <VideoContents
+        onChange={(values) => handleChange("videoContents", values)}
+      />
       <ImageGallery2
         onChange={(values) => handleChange("imageGallery2", values)}
       />
-      <Faq />
+      <Faq onChange={(values) => handleChange("faq", values)} />
       <Footer />
       {/* <div className={styles.dataArea}>
         <pre>{JSON.stringify(builderValues, null, 4)}</pre>
